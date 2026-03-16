@@ -1,0 +1,155 @@
+% Document template for ANS Journals
+% Options: footnoteAtEnd - Places all footnotes at the end of document
+%               Usage: \documentclass[footnoteAtEnd]{style/nseJournal}
+\documentclass[hidelinks]{style/nseJournal}
+
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{todonotes}
+\usepackage{comment}
+\usepackage[acronym]{glossaries}
+\include{acros}
+
+\begin{document}
+
+\title{Investigation of Delayed Neutron Precursor Data Uncertainties for Microscopic and Summation Calculations} %title of paper
+
+% Use the \addAuthor macro to add authors in the order they should appear. The second argument corresponds to
+% the affiliation declared below.
+% The corresponding author should be wrapped in \correspondingAuthor
+\addAuthor{\correspondingAuthor{Luke Seifert}}{a}
+\correspondingEmail{seifert5@illinois.edu}
+\addAuthor{Madicken Munk}{a, b}
+\addAuthor{Kathryn Huff}{a}
+
+% Affiliations can be added in the order they should appear. For breaks in addresses, use either \\ or \tabularnewline
+\addAffiliation{a}{Advanced Reactors and Fuel Cycles Group,\\ University of Illinois at Urbana-Champaign, Urbana, IL}
+\addAffiliation{b}{School of Nuclear Science and Engineering,\\ Oregon State University, Corvallis, OR}
+
+% Add keywords to appear in Abstract in the order they should appear
+\addKeyword{Delayed Neutron Precursors}
+\addKeyword{Group Parameters}
+\addKeyword{Nuclear Data}
+\addKeyword{Nuclear Data Uncertainties}
+\addKeyword{ENDF}
+\addKeyword{JEFF}
+
+
+
+\titlePage
+
+\begin{abstract}
+This paper presents an analysis on the sensitivity of \gls{DNP} group parameters, group half-lives $\tau_k$ and yields $\nu_{d,k}$, and summed delayed neutron yields to uncertainties in their nuclear data for various datasets, including the \gls{IAEA} beta-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, ENDF/B-VIII.1, and JEFF-3.1.1.
+These uncertainty-weighted sensitivities provide a detailed view of which \glspl{DNP} need more accurate data such that analyses using individual \glspl{DNP}, such as microscopic group parameter formulation and summation calculations, may be more accurate.
+Improving the accuracy of these analyses is of particular importance for kinetics models, which rely on accurate \gls{DNP} group parameters.
+The microscopic approach for group parameter calculation is useful for providing insight into how each \gls{DNP} contributes to delayed neutron emission, but it requires accurate nuclear data. \todo{Is it worth talking about MoSDeN here? Maybe suggest that this is useful for advanced reactors? It might be useful for motivation.}
+The analyses conducted in this work reveal several \glspl{DNP} that correlate strongly with the \gls{DNP} group parameters, indicating a need for more accurate data for those \glspl{DNP}.
+There are also \glspl{DNP} which have large uncertainties and vary significantly between datasets which also warrant additional attention.
+This paper informs which \glspl{DNP} are in need of updates to their data for various nuclear datasets.
+\end{abstract}
+
+
+
+\section{Introduction}
+
+\begin{itemize}
+    \item Accurately modeling nuclear reactor kinetics is important for safe operation and understanding reactor responses to various transients
+    \item DNPs are a key component of kinetics modeling (say what they are, typically use 6 groups, introduce notation and group parameters, microscopic calculations as an approach to calculate these parameters)
+    \item However, there is a need for more data on DNPs.
+    \item This paper aims to clarify and specify what DNP data are lacking in different datasets, offering weighted values that indicate not only the uncertainty of the data, but the relative impact of that uncertainty on the calculations that use it.
+    \item (Tie it back into the broad scope) By providing the data of importance for these datasets, future analyses can target experiments to produce that specific data to further improve DNP group parameters and kinetics models.
+\end{itemize}
+
+\section{Methods}
+
+Overview - I calculated the DNP group parameters using the microscopic approach similar to how it is conducted in the literature (give references) using an in-development Python package called MoSDeN (maybe don't discuss MoSDeN since this isn't molten salt related?). However, instead of using a pulse irradiation approach, I use CFYs and such (faster, no depletion chain; enabled running many comparisons and samples to do sensitivity studies; easier to quantify uncertainty using CFY rather than propagating through depletion chain). I then used that sampled data to calculate the delayed neutron count rate and used that delayed neutron count rate to calculate the group parameters. I repeated this approach 5000 times for each dataset to calculate the sensitivity of the group parameters to variation of the DNPs within their uncertainties, assuming a normal distribution about the standard deviation.
+
+\subsection{Data}
+
+\begin{itemize}
+    \item Explain the CFY, Pn, and $\lambda$ values.
+    \item Discuss the various datasets that will be included (combinations of datasets only considered for datasets that do not include certain data (such as IAEA database not including CFYs))
+\end{itemize}
+
+
+\subsection{Solver}
+
+\begin{itemize}
+    \item Explain delayed neutron count rate calculation (from data and from groups) (with sampled params)
+    \item Discuss that the microscopic approach enables evaluation of specific DNPs and their impacts (rather than using a macroscopic approach, which only uses the count rate)
+    \item Discuss how this approach enables capturing the sensitivities of individual DNPs and isolating problematic data
+    \item Discuss that this approach (compared to using the OpenMC approach) is faster, doesn't require depletion chain modeling, and enables a per-nuclide evaluation of what data needs investigation. It also pairs well with summation calculations, as it uses the same data.
+\end{itemize}
+
+\begin{itemize}
+    \item Explain non-linear least squares solve
+    \item Discuss other ways in literature (known nuclides, exponential stripping) and justify that this approach offers a less subjective methodology, though the use of known nuclides could also be improved with additional data on other DNPs
+\end{itemize}
+
+\subsection{Sensitivity Analyses}
+
+\begin{itemize}
+    \item Discuss Pearson Correlation Coefficient usage (give an example figure for -1, 0, and +1) and uncertainty weighted calculation
+    \item PCC was selected to determine variation in group parameters due to variation in individual DNP data
+    \item This approach was selected because the sensitivities did not generally have strong non-linear behavior. The non-linear least squares will result in non-linear effects, but linear correlations dominate in sensitivities.
+\end{itemize}
+
+\FloatBarrier
+
+
+\section{Results}
+Each sub-section in the results will read pretty-similarly.
+
+\begin{itemize}
+    \item Show the largest PCCs in a table
+    \item Show chart of nuclides with summed PCCs and summed uncertainty-weighted PCCs
+    \item Show bar chart with most significant summed uncertainty-weighted PCCs
+    \item Discuss which data contribute most to any outliers, and what DNPs need data more than others.
+\end{itemize}
+
+\subsection{IAEA Beta-Delayed Neutron Emission Database}
+
+\begin{itemize}
+    \item Show that results using CFYs from JEFF-3.1.1 match results from IAEA CRP document (verification with literature)
+    \item Discuss impacts from other CFYs (potential issues with specific DNP CFYs)
+\end{itemize}
+
+\subsection{ENDF/B-VII.1}
+
+\subsection{JEFF-3.1.1}
+
+
+\section{Conclusions}
+
+\begin{itemize}
+    \item Summarize the main takeaways from the results (maybe a table indicating DNPs of interest for different datasets?)
+    \item Describe how improving these data will enable development of improved models of DNPs and kinetics models \todo{Possibly tie into MSRs and MoSDeN?}
+\end{itemize}
+
+
+\pagebreak
+\section*{Acknowledgments}
+This material is based upon work supported under an Integrated University Program Graduate
+Fellowship.
+Any opinions, findings, conclusions or recommendations expressed in this publication are
+those of the author(s) and do not necessarily reflect the views of the Department of Energy
+Office of Nuclear Energy.
+Part of this work was funded by the Department of Energy’s National Nuclear Security Administration Office of International Nuclear Safeguards (NA-241) under the Advanced Reactor International Safeguards Engagement (ARISE) Program at Argonne National Laboratory (“Argonne”). Argonne, a U.S. Department of Energy Office of Science laboratory, is operated under Contract No. DE-AC02-06CH11357 by UChicago Argonne, LLC.
+Funding for this work was supported by the Department of Nuclear, Plasma and Radiological Engineering.
+
+\textbf{Luke Seifert}: Conceptualization, methodology, data curation, formal analysis, software, visualization, writing - original draft, writing - review and editing.
+\textbf{Madicken Munk}: Supervision, funding acquisition, writing - review and editing.
+\textbf{Kathryn Huff}: Supervision, funding acquisition, writing - review and editing.
+Thanks to Bryan Park, Liam Pohlmann, and Elijah Capps for review of the Python package used in this work.
+Additional thanks to the University of Illinois Department of Nuclear, Plasma, and Radiological Engineering and the members of the Advanced Reactors and Fuel Cycles group for their support and suggestions in developing this work.
+
+
+
+\pagebreak
+\bibliographystyle{style/ans_js}                                                                           %custom ANS journal submission template bibliography style
+\bibliography{bibliography}
+
+\end{document}
+
+
