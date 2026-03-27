@@ -1,22 +1,23 @@
 {
-    "name": "prelim",
-    "multi_id": null,
+    "name": "omc_four_dnp",
     "file_options": {
         "overwrite": {
             "preprocessing": true,
             "concentrations": true,
             "count_rate": true,
             "group_fitting": true,
-            "postprocessing": true,
-            "logger": true
+            "postprocessing": true
         },
-        "log_level": 20
+        "unprocessed_data_dir": "../../../tests/integration/test-data",
+        "processed_data_dir": "./",
+        "output_dir": "./",
+        "log_level": 15
     },
     "data_options": {
-        "half_life": "endfb80/decay/",
+        "half_life": "iaea/four_dnp_test.csv",
         "cross_section": "",
-        "emission_probability": "endfb80/decay/",
-        "fission_yield": "jeff311/nfpy/",
+        "emission_probability": "iaea/four_dnp_test.csv",
+        "fission_yield": "omcchain/four_dnp_test.xml",
         "decay_time_spacing": "log",
         "temperature_K": 920,
         "density_g_cm3": 2.3275,
@@ -27,28 +28,24 @@
     },
     "modeling_options": {
         "parent_feeding": false,
-        "concentration_handling": "CFY",
+        "concentration_handling": "OMC",
         "count_rate_handling": "data",
         "reprocessing_locations": ["excore"],
-        "base_removal_scaling": 0.5,
         "reprocessing": {
             "Xe": 0.0
         },
-        "irrad_type": "saturation",
-        "incore_s": 4200,
+        "irrad_type": "intermediate",
+        "incore_s": 0.00001,
         "excore_s": 0,
-        "spatial_scaling": {
-            "flux": false,
-            "reprocessing": false
-        },
-        "net_irrad_s": 4200,
-        "decay_time": 600,
-        "num_decay_times": 800
+        "net_irrad_s": 0.00004,
+        "decay_time": 1200,
+        "num_decay_times": 300
     },
     "group_options": {
-        "num_groups": 6,
+        "num_groups": 4,
         "method": "nlls",
-        "samples": 5000,
-        "sample_func": "normal"
+        "samples": 1,
+        "sample_func": "normal",
+        "seed": 1
     }
 }
