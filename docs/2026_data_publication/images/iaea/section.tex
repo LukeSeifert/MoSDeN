@@ -2,6 +2,7 @@ Figure \ref{fig:iaea-jendl-dnp-yield} shows the percentage of the total delayed 
 This equation shows that the largest yield contributors have large emission probabilities $P_n$ and cumulative fission yields $CFY$.
 This doesn't necessarily indicate there will be a large concentration of the \gls{DNP}, as it may be short lived, but rather for any given fission, that \gls{DNP} has a higher probability to form and emit a delayed neutron.
 The total delayed neutron yield for this dataset is 0.0160 delayed neutrons per fission event.
+There are a total of 220 \glspl{DNP} in this dataset, and five of them capture over 50\% of the total delayed neutron yield.
 
 \begin{figure}
     \centering
@@ -31,6 +32,28 @@ These results show that the Keepin et al. \gls{DNP} group parameters agree well 
 \label{fig:count-rate-iaea-jendl}
 \end{figure}
 
+Figure \ref{fig:sens-iaea-jendl} shows an example for how the \glspl{PCC} are calculated using the 5000 samples.
+Each sample is represented as a single point at which the nuclear data is sampled from a normal distribution.
+Specifically for this figure, the samples are plotted as a function of the $^{137}$I half-life.
+Figure \ref{fig:sens-iaea-jendl}(a) shows how the group one \gls{DNP} half-life $\tau_1$ changes as a function of the $^{137}$I half-life.
+There is no clear increase or decrease in the group one half-life as the $^{137}$I half-life varies, which is why the \gls{PCC} is 0.005 for that combination.
+However, Figure \ref{fig:sens-iaea-jendl}(b) shows how the group two \gls{DNP} half-life $\tau_2$ has a much stronger correlation, resulting in a \gls{PCC} of 0.73.
+These \gls{PCC} values are calculated for the emission probability, concentration, and half-life for each group for each \gls{DNP}.
+
+\begin{figure}[!ht]
+\centering
+\subfloat[The relative change in the group one half-life $\tau_1$ due to relative change in the $^{137}$I half-life with a \gls{PCC} of 0.005.]{
+  \includegraphics[width=0.45\linewidth]{images/iaea/sens_lam_halflife_I137_1.png}
+}
+\hspace{0.05\linewidth}
+\subfloat[The relative change in the group two half-life $\tau_2$ due to relative change in the $^{137}$I half-life with a \gls{PCC} of 0.726.]{
+  \includegraphics[width=0.45\linewidth]{images/iaea/sens_lam_halflife_I137_2.png}
+}
+\caption{These plots show the sensitivity of the \gls{DNP} group one and two half-lives to the $^{137}$I half-life. The group one half-life $\tau_1$ does not correlate with the $^{137}$I half-life, resulting in a sample distribution with no discernible slope. The group two half-life $\tau_2$ has a strong, positive linear correlation with the $^{137}$I half-life with a \gls{PCC} of 0.73. This indicates that changes to the $^{137}$I half-life will have greater effects on the group two half-life than the group one half-life.}
+\label{fig:sens-iaea-jendl}
+\end{figure}
+
+
 Table \ref{tab:iaea-jendl5-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
 The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
 
@@ -55,7 +78,7 @@ The differences between both are well within the uncertainty bounds, indicating 
 \end{table}
 
 Table \ref{tab:iaea-jendl5-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
-This table shows that bromine alone has five isotopes that affect the \gls{DNP} group parameters, with $^{87}$Br being the dominant isotope due to its long-half life that makes it the primary \gls{DNP} for the group one parameters.
+This table shows that bromine alone has five isotopes that strongly affect the \gls{DNP} group parameters, with $^{87}$Br being the dominant isotope due to its long-half life that makes it the primary \gls{DNP} for the group one parameters.
 Generally, \glspl{DNP} will have a large $PCC_i$ for one of two reasons: they have a large delayed neutron yield and may affect several parameters moderately, such as $^{137}$I; or they have a half-life that causes them to have a large impact on one specific group, such as $^{87}$Br.
 
 \begin{table}[]
@@ -134,10 +157,9 @@ There do not appear to be any clear trends, though in Figure \ref{fig:pcc-charts
 \subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
   \includegraphics[width=0.45\linewidth]{images/iaea/chart_PCC_uncertainty.png}
 }
-\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC}.}
+\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database emission probabilities and half-lives.}
 \label{fig:pcc-charts-iaea-jendl}
 \end{figure}
 
 
-\FloatBarrier
 \FloatBarrier
