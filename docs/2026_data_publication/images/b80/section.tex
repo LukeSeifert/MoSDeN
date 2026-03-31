@@ -1,0 +1,121 @@
+Figure \ref{fig:b80-dnp-yield} shows the percentage of the total delayed neutron yield that comes from the six \glspl{DNP} with the largest yield contribution, where the yield from each \gls{DNP} is defined by Equation \eqref{eq:summation-tdny}.
+There are 277 \glspl{DNP} in ENDF/B-VIII.0, 59 more than in ENDF/B-VII.1.
+Although Figures \ref{fig:b80-dnp-yield} and \ref{fig:b71-dnp-yield} are similar, the main difference is the appearance of $^{86}$As in the top six \gls{DNP} yields.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/b80/dnp_yield.png}
+    \caption{The fraction of the delayed neutron yield from particular \glspl{DNP} from ENDF/B-VIII.0 nuclear data. The six \glspl{DNP} with the largest delayed neutron yield contributions approximately 50\% of the total delayed neutrons per fission event. The remaining 271 \glspl{DNP} provide approximately 50\% of the total delayed neutron yield.}
+    \label{fig:b80-dnp-yield}
+\end{figure}
+
+
+Table \ref{tab:b80-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
+The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
+However, the average half-life differs by approximately 0.3 seconds from Section \ref{sec:b71}, while the total delayed neutron yield differs by approximately 100 $pcm$.
+These differences put both results within uncertainty bounds of each other, though the ENDF/B-VIII.0 total delayed neutron yield and average half-life have even larger differences from the values calculated using the IAEA beta-delayed neutron emission database and JENDL-5 than the ENDF/B-VII.1 data.
+
+\begin{table}[]
+    \centering
+    \caption{ENDF/B-VIII.0 nuclear data delayed neutron yield and average half-life values.}
+    \begin{tabular}{lrl}
+        \hline
+        Parameter & Value & Units\\
+        \hline
+        $\nu_d(I)$ & $0.0202 \pm 0.0011$ &$ [-]$\\
+        $\nu_d(K)$ & $0.0203 \pm 0.0009$ & $[-]$\\
+        $\Delta \nu_d$ & $4.64 \pm 142.02$ & $[pcm]$\\
+        \hline
+        $\bar{\tau} (I)$ & $6.9 \pm 0.3$ & $[s]$\\
+        $\bar{\tau} (K)$ & $6.9 \pm 0.3$ & $[s]$\\
+        $\Delta \bar{\tau}$ & $0.01 \pm 0.4$ & $[s]$\\
+        \hline
+    \end{tabular}
+    \label{tab:b80-yld-hl}
+\end{table}
+
+Table \ref{tab:b80-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+These results are similar to those presented in Section \ref{sec:b71} using ENDF/B-VII.1 data.
+The main changes are due to the presence of arsenic-86 and 87, which was not present in the ten largest \glspl{PCC} for ENDF/B-VII.1 data.
+
+\begin{table}[]
+    \centering
+    \caption{ENDF/B-VIII.0 nuclear data ten largest \glspl{PCC}.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $PCC_{i}$ \\
+       \hline
+       $^{137}$Sb & 5.052885 \\
+       $^{100}$Rb & 4.837795 \\
+       $^{137}$I & 4.468315 \\
+       $^{87}$Br & 3.350813 \\
+       $^{85}$As & 2.685888 \\
+       $^{88}$As & 2.107151 \\
+       $^{88}$Br & 2.093959 \\
+       $^{131}$Cd & 1.988529 \\
+       $^{86}$As & 1.862035 \\
+       $^{87}$As & 1.472684 \\
+        \hline
+    \end{tabular}
+    \label{tab:b80-PCCi}
+\end{table}
+
+Table \ref{tab:b80-Ui} shows the ten largest $U_i$ terms, which corresponds to which \glspl{DNP} have the largest uncertainties relative to their impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+The results are very similar to those shown in Table \ref{tab:b71-Ui}, though $^{87}$As has taken the place of $^{102}$Y for having a large \gls{PCC} and relative uncertainty, appearing in both Table \ref{tab:b80-PCCi} and \ref{tab:b80-Ui}.
+Another new addition is $^{131}$Cd, which does not have any differences in cumulative fission yield, emission probability, or half-life between ENDF/B-VII.1 and ENDF/B-VIII.0.
+Instead the \glspl{PCC} increased because of differences in other \glspl{DNP}, as can be seen by comparing the $^{131}$Cd ENDF/B-VIII.0 $PCC_i$ of 1.989 to the ENDF/B-VII.1 value of 1.889.
+
+\begin{table}[]
+    \centering
+    \caption{ENDF/B-VIII.0 nuclear data ten largest uncertainty-weighted \glspl{PCC}. Bold \glspl{DNP} are present in Table \ref{tab:b80-PCCi} as well, indicating they have a strong effect on \gls{DNP} group parameters.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $U_{i}$ \\
+       \hline
+       \textbf{$^{100}$Rb} & \textbf{1.510501} \\
+       \textbf{$^{137}$Sb} & \textbf{1.274605} \\
+       \textbf{$^{87}$As} & \textbf{0.380737} \\
+       $^{99}$Kr & 0.355989 \\
+       $^{102}$Y & 0.291115 \\
+       $^{84}$As & 0.268318 \\
+       \textbf{$^{131}$Cd} & \textbf{0.253599} \\
+       $^{98}$Y & 0.245287 \\
+       $^{104}$Nb & 0.240678 \\
+       $^{124}$Ag & 0.240391 \\
+        \hline
+    \end{tabular}
+    \label{tab:b80-Ui}
+\end{table}
+
+Figure \ref{fig:b80-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+This offers slightly more insight than Table \ref{tab:b80-Ui}, which sums over the various \gls{DNP} values.
+The top four $U_{i,v}$ values are identical as those in Figure \ref{fig:b71-bar-uiv}, indicating nuclear data for $^{100}$Rb and $^{137}$Sb remain problematic in ENDF/B-VIII.0 when calculating \gls{DNP} group parameters.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/b80/pcc-bar.png}
+    \caption{The ten largest uncertainty-weighted \glspl{PCC} $U_{i,v}$ sorted by \gls{DNP} and associated \gls{DNP} value from JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities.}
+    \label{fig:b80-bar-uiv}
+\end{figure}
+
+
+Figure \ref{fig:pcc-charts-b80} shows the $PCC_i$ and $U_i$ plotted on the chart of the nuclides.
+These plots do not limit to only the top ten largest values, but instead show how all of the values compare among each other.
+The values of $U_i$ are all smaller than those of $PCC_i$, because all of the relative uncertainties are less than 1.
+The same points of interest as in Figure \ref{fig:pcc-charts-b71} are still relevant: $^{100}$Rb and $^{137}$Sb.
+
+\begin{figure}[!ht]
+\centering
+\subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/b80/chart_PCC.png}
+}
+\hspace{0.05\linewidth}
+\subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/b80/chart_PCC_uncertainty.png}
+}
+\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using ENDF/B-VIII.0 nuclear data.}
+\label{fig:pcc-charts-b80}
+\end{figure}
+
+\FloatBarrier
