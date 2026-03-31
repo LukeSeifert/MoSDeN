@@ -257,10 +257,11 @@ and
     \label{eq:avg-hl-group}
 \end{equation}
 These equations are approximate because the number of groups $K$ used is fewer than the total number of \glspl{DNP} $I$.
+To differentiate between the calculation of these parameters using $I$ \glspl{DNP} and $K$ groups, the parameters will be written as $\nu_d(I)$ and $\bar{\tau}(I)$ when calculated using $I$ \glspl{DNP} and $\nu_d(K)$ and $\bar{\tau}(K)$ when calculated using $K$ groups.
 
 \subsection{Data Analysis}
 
-The \gls{PCC} is used to analyze the \gls{DNP} group parameters calculated from the solver for various unique combinations of sampled \gls{DNP} nuclear data.
+The \gls{PCC} is used to analyze the \gls{DNP} group parameters calculated from the solver for various unique combinations of sampled \gls{DNP} nuclear data and is calculated using the SciPy stats module \cite{scipy}.
 The \gls{PCC} measures the linear correlation between the \gls{DNP} data and the calculated \gls{DNP} group parameters.
 A measure of 0 indicates there is no correlation, a measure of +1 indicates perfect positive linear correlation, and a measure of -1 indicates perfect negative linear correlation.
 So, for example, $^{87}$Br can be expected to have a \gls{PCC} near +1 for the impact of its half-life $\tau_i$ on the half-life of group one\footnote{Group one is the longest-lived \gls{DNP} group.} $\tau_1$.
@@ -305,6 +306,12 @@ This metric is larger when:
     \item the relative uncertainty in the \gls{DNP}'s nuclear data is large.
 \end{itemize}
 
+This can also be represented for any individual \gls{DNP} value by removing the summation over $v$.
+This is shown in Equation \eqref{eq:Uiv-no-sum} which gives the uncertainty-weighted \gls{PCC} for a given \gls{DNP} $i$ and nuclear data $v$ as:
+\begin{equation}
+    U_{i,v} = \frac{\sigma_{i,v}}{x_{i,v}} \sum_k\left|PCC_{i,v,k}\right|.
+    \label{eq:Uiv-no-sum}
+\end{equation}
 
 \FloatBarrier
 
@@ -315,10 +322,10 @@ Each sub-section will contain the following analyses for each dataset:
 \begin{itemize}
     \item the total delayed neutron yield calculated from summation of \glspl{DNP} $\nu_d(I)$ and from the group parameters $\nu_d(K)$
     \item the average half-life calculated from summation of \glspl{DNP} $\bar{\tau}(I)$ and from the group parameters $\bar{\tau}(K)$
-    \item the five \glspl{DNP} with the largest yield contributions
-    \item the ten largest \glspl{PCC} in a table
-    \item a chart of nuclides with summed \glspl{PCC} and summed, uncertainty-weighted \glspl{PCC}
-    \item a bar chart with the most significant summed, uncertainty-weighted \glspl{PCC}.
+    \item the six \glspl{DNP} with the largest yield contributions
+    \item the tabulated ten largest \glspl{PCC} and uncertainty-weighted \glspl{PCC}
+    \item a chart of nuclides made using \gls{ARMI} with summed \glspl{PCC} and uncertainty-weighted \glspl{PCC} \cite{armi}
+    \item a bar chart with the most significant uncertainty-weighted \glspl{PCC}.
 \end{itemize}
 Table \ref{tab:default-params} shows the default parameters used for each simulation.
 
@@ -350,6 +357,16 @@ They present a benchmark problem using JEFF-3.1.1 cumulative fission yields with
 The four groups in the study are \gls{CEA}, \gls{CIEMAT}, the \gls{JAEA}, and the University of Nantes, all of whom reported the same result of $0.01609 \pm 0.0008$ for the total delayed neutron yield from thermal fission of $^{235}$U.
 This agrees with the same result calculated in this work of $0.01609 \pm 0.0008$.
 
+For the first set of results, additional information will be included that is not included in the other sections.
+Specifically, the delayed neutron count rate will be provided as well as a comparison to the count rate from calculated from other \gls{DNP} group parameters in the literature.
+There will also be an example figure demonstrating how the stochastic sampling affects the \gls{DNP} group parameters.
+
+\FloatBarrier
+
+\subsection{IAEA Beta-Delayed Neutron Emission Database}
+
+\input{images/iaea/section}
+
 \subsection{ENDF/B-VII.1}
 
 \subsection{ENDF/B-VIII.0}
@@ -358,17 +375,13 @@ This agrees with the same result calculated in this work of $0.01609 \pm 0.0008$
 
 \subsection{JENDL-5}
 
-\subsection{IAEA Beta-Delayed Neutron Emission Database}
 
-\begin{comment}
-[info] summed_yield = 0.01596338745955965+/-0.0009097584585903453
-[info] summed_avg_halflife = 9.05183573962064+/-0.4720283764310905 s
-[info] group_yield = 0.0159795870360108+/-0.0008105516321661324
-[info] group_avg_halflife = 9.00757751976061+/-0.3942384589672995 s
-\end{comment}
 
 
 \subsection{Hybrid}
+
+\todo{Have a large table with all group parameters, yields, half-lives, etc. (maybe put full table in an appendix)}
+
 
 \section{Conclusions}
 
