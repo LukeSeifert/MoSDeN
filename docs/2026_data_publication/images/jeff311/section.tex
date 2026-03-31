@@ -1,0 +1,122 @@
+Figure \ref{fig:jeff311-dnp-yield} shows the percentage of the total delayed neutron yield that comes from the six \glspl{DNP} with the largest yield contribution, where the yield from each \gls{DNP} is defined by Equation \eqref{eq:summation-tdny}.
+There are only 136 \glspl{DNP} present in JEFF-3.1.1, and they have a total delayed neutron yield of 0.01477.
+This is much smaller than the total delayed neutron yields from other datasets, and thus leads each \gls{DNP} to have a larger relative contribution to the delayed neutron yield.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/jeff311/dnp_yield.png}
+    \caption{The fraction of the delayed neutron yield from particular \glspl{DNP} from JEFF-3.1.1 nuclear data. The give \glspl{DNP} with the largest delayed neutron yield contributions approximately 56\% of the total delayed neutrons per fission event. The remaining 131 \glspl{DNP} provide approximately 44\% of the total delayed neutron yield.}
+    \label{fig:jeff311-dnp-yield}
+\end{figure}
+
+
+Table \ref{tab:jeff311-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
+The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
+Although the total delayed neutron yield is smaller than other datasets, the average half-life is longer, indicating that the JEFF-3.1.1 data may be missing or under-predicting concentrations of short-lived \gls{DNP} in particular.
+
+\begin{table}[]
+    \centering
+    \caption{JEFF-3.1.1 nuclear data delayed neutron yield and average half-life values.}
+    \begin{tabular}{lrl}
+        \hline
+        Parameter & Value & Units\\
+        \hline
+        $\nu_d(I)$ & $0.0148 \pm 0.0008$ &$ [-]$\\
+        $\nu_d(K)$ & $0.0148 \pm 0.0007$ & $[-]$\\
+        $\Delta \nu_d$ & $1.25 \pm 108.88$ & $[pcm]$\\
+        \hline
+        $\bar{\tau} (I)$ & $9.2 \pm 0.4$ & $[s]$\\
+        $\bar{\tau} (K)$ & $9.2 \pm 0.4$ & $[s]$\\
+        $\Delta \bar{\tau}$ & $0.0 \pm 0.6$ & $[s]$\\ % 0.015 +/- 0.584
+        \hline
+    \end{tabular}
+    \label{tab:jeff311-yld-hl}
+\end{table}
+
+Table \ref{tab:jeff311-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+The top two \glspl{DNP}, $^{137}$I and $^{87}$Br, strongly affect groups two and one as previously discussed, which is why they have the largest \glspl{PCC}.
+Section \ref{sec:iaea-jendl5} has a more detailed discussion on what effects increase \glspl{PCC}.
+
+
+\begin{table}[]
+    \centering
+    \caption{JEFF-3.1.1 nuclear data ten largest \glspl{PCC}.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $PCC_{i}$ \\
+       \hline
+       $^{137}$I & 3.619275 \\
+       $^{87}$Br & 3.498093 \\
+       $^{88}$Br & 3.323438 \\
+       $^{138}$I & 2.993978 \\
+       $^{96}$Rb & 2.727061 \\
+       $^{89}$Br & 2.304603 \\
+       $^{98}$Y & 2.055720 \\
+       $^{94}$Rb & 1.959133 \\
+       $^{91}$Br & 1.919183 \\
+       $^{90}$Br & 1.886707 \\
+        \hline
+    \end{tabular}
+    \label{tab:jeff311-PCCi}
+\end{table}
+
+Table \ref{tab:jeff311-Ui} shows the ten largest $U_i$ terms, which corresponds to which \glspl{DNP} have the largest uncertainties relative to their impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+There are several \glspl{DNP} that appear in Table \ref{tab:jeff311-Ui} that also appear in Table \ref{tab:jeff311-PCCi}, indicated by the bold values.
+This highlighting indicates \glspl{DNP} that strongly affect the \gls{DNP} group parameters, meaning that, although their relative uncertainties may not be as large as the other \glspl{DNP} in the table, the uncertainties they do have lead to large differences in the \gls{DNP} group parameters and calculated delayed neutron emission rates.
+
+\begin{table}[]
+    \centering
+    \caption{JEFF-3.1.1 nuclear data ten largest uncertainty-weighted \glspl{PCC}. Bold \glspl{DNP} are present in Table \ref{tab:jeff311-PCCi} as well, indicating they have a strong effect on \gls{DNP} group parameters.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $U_{i}$ \\
+       \hline
+       \textbf{$^{98}$Y} & \textbf{0.387086} \\
+       $^{93}$Br & 0.237471 \\
+       $^{147}$Xe & 0.214894 \\
+       \textbf{$^{96}$Rb} & \textbf{0.176298} \\
+       $^{138}$Te & 0.171012 \\
+       $^{94}$Br & 0.152192 \\
+       \textbf{$^{91}$Br} & \textbf{0.148399} \\
+       $^{158}$Nd & 0.144933 \\
+       \textbf{$^{137}$I} & \textbf{0.141580} \\
+       $^{111}$Mo & 0.134707 \\
+        \hline
+    \end{tabular}
+    \label{tab:jeff311-Ui}
+\end{table}
+
+Figure \ref{fig:jeff311-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+This offers slightly more insight than Table \ref{tab:jeff311-Ui}, which sums over the various \gls{DNP} values.
+For instance, these results show that $^{98}$Y has a large contribution of its uncertainty-weighted sensitivity come from emission probability uncertainty, with a smaller contribution from its half-life uncertainty.
+It can also be seen that $^{137}$I is not in Figure \ref{fig:jeff311-bar-uiv} even though it is in Table \ref{tab:jeff311-Ui}, indicating that its uncertainty-weighted sensitivity comes from the sum of several smaller components rather than one large term.
+Specifically, 54.5\% comes from emission probability uncertainty, 42.8\% comes from concentration uncertainty, and the remainder comes from half-life uncertainty.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/jeff311/pcc-bar.png}
+    \caption{The ten largest uncertainty-weighted \glspl{PCC} $U_{i,v}$ sorted by \gls{DNP} and associated \gls{DNP} value from ENDF/B-VII.1 nuclear data.}
+    \label{fig:jeff311-bar-uiv}
+\end{figure}
+
+
+Figure \ref{fig:pcc-charts-jeff311} shows the $PCC_i$ and $U_i$ plotted on the chart of the nuclides.
+These plots do not limit to only the top ten largest values, but instead show how all of the values compare among each other.
+The values of $U_i$ are all smaller than those of $PCC_i$, because all of the relative uncertainties are less than 1.
+There are similar patterns as discussed in Section \ref{sec:iaea-jendl5}, with horizontal peaks in the $PCC_i$ for bromine, rubidium, and iodine.
+
+\begin{figure}[!ht]
+\centering
+\subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/jeff311/chart_PCC.png}
+}
+\hspace{0.05\linewidth}
+\subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/jeff311/chart_PCC_uncertainty.png}
+}
+\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using JEFF-3.1.1 nuclear data.}
+\label{fig:pcc-charts-jeff311}
+\end{figure}
+
+\FloatBarrier
