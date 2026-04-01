@@ -1,0 +1,122 @@
+Figure \ref{fig:jendl5-dnp-yield} shows the percentage of the total delayed neutron yield that comes from the six \glspl{DNP} with the largest yield contribution, where the yield from each \gls{DNP} is defined by Equation \eqref{eq:summation-tdny}.
+There are 257 \glspl{DNP} present in JENDL-5, and they have a total delayed neutron yield of 0.0160.
+This is consistent with the results in Section \ref{sec:iaea-jendl5}, as the only difference between these datasets is the emission probability and half-life data.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/jendl5/dnp_yield.png}
+    \caption{The fraction of the delayed neutron yield from particular \glspl{DNP} from JENDL-5 nuclear data. The five \glspl{DNP} with the largest delayed neutron yield contributions approximately 52\% of the total delayed neutrons per fission event.}
+    \label{fig:jendl5-dnp-yield}
+\end{figure}
+
+
+Table \ref{tab:jendl5-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
+The results agree well with the data in Section \ref{sec:iaea-jendl5}.
+
+\begin{table}[]
+    \centering
+    \caption{JENDL-5 nuclear data delayed neutron yield and average half-life values.}
+    \begin{tabular}{lrl}
+        \hline
+        Parameter & Value & Units\\
+        \hline
+        $\nu_d(I)$ & $0.0160 \pm 0.0009$ &$ [-]$\\
+        $\nu_d(K)$ & $0.0160 \pm 0.0008$ & $[-]$\\
+        $\Delta \nu_d$ & $0.09 \pm 122.31$ & $[pcm]$\\
+        \hline
+        $\bar{\tau} (I)$ & $9.1 \pm 0.5$ & $[s]$\\
+        $\bar{\tau} (K)$ & $9.1 \pm 0.5$ & $[s]$\\
+        $\Delta \bar{\tau}$ & $0.0 \pm 0.6$ & $[s]$\\ % 0.00591310092491959+/-0.6488314744438124 s
+        \hline
+    \end{tabular}
+    \label{tab:jendl5-yld-hl}
+\end{table}
+
+Table \ref{tab:jendl5-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+The same \glspl{DNP} are in Table \ref{tab:iaea-jendl5-PCCi}, though the exact values and order is slightly different due to half-life and emission probability differences.
+
+
+\begin{table}[]
+    \centering
+    \caption{JENDL-5 nuclear data ten largest \glspl{PCC}.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $PCC_{i}$ \\
+       \hline
+       $^{87}$Br & 3.788538 \\
+       $^{88}$Br & 3.405082 \\
+       $^{137}$I & 3.373592 \\
+       $^{96}$Rb & 3.230474 \\
+       $^{97}$Rb & 2.406196 \\
+       $^{138}$I & 2.209843 \\
+       $^{94}$Rb & 2.202741 \\
+       $^{89}$Br & 2.123136 \\
+       $^{91}$Br & 1.779122 \\
+       $^{90}$Br & 1.733836 \\
+        \hline
+    \end{tabular}
+    \label{tab:jendl5-PCCi}
+\end{table}
+
+Table \ref{tab:jendl5-Ui} shows the ten largest $U_i$ terms, which corresponds to which \glspl{DNP} have the largest uncertainties relative to their impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+Four out of ten of these \glspl{DNP} are also in Table \ref{tab:iaea-jendl5-Ui}, though there are differences due to the emission probability and half-life differences.
+One notable difference is $^{102}$Sr, which has a $U_i$ value of $3.63 \times 10^{13}$.
+This value is significantly larger than any other value from any other dataset because it has an emission probability of $(6.245 \times 10^{-17}) \pm 0.02$.
+This means that the relative uncertainty in Equation \eqref{eq:Uiv} works out to be $3.2 \times 10^{-14}$, which is exceedingly large.
+To continue conducting the analysis, the contribution of $^{102}$Sr is ignored, treating the emission probability as 0 for this analysis.
+
+\begin{table}[]
+    \centering
+    \caption{JENDL-5 nuclear data ten largest uncertainty-weighted \glspl{PCC}.}
+    \begin{tabular}{ll}
+        \hline
+       Nuclide & $U_{i}$ \\
+       \hline
+       $^{102}$Sr & -\\
+       $^{142}$Sb & 0.283440 \\
+       $^{99}$Kr & 0.279344 \\
+       $^{105}$Zr & 0.270256 \\
+       $^{116}$Rh & 0.269286 \\
+       $^{103}$Zr & 0.267184 \\
+       $^{124}$Ag & 0.228787 \\
+       $^{68}$Co & 0.224881 \\
+       $^{134}$Sn & 0.207609 \\
+       $^{66}$Mn & 0.199226 \\
+        \hline
+    \end{tabular}
+    \label{tab:jendl5-Ui}
+\end{table}
+
+Figure \ref{fig:jendl5-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+This offers slightly more insight than Table \ref{tab:jendl5-Ui}, which sums over the various \gls{DNP} values.
+These uncertainty-weighted sensitivities are closer to the ideal configuration: values are close to each other, and the uncertainties in half-lives, emission probability, and concentration each contribute some amount.
+There are no clear outliers in the data, though, similar to the results in Section \ref{sec:iaea-jendl5}, the largest uncertainty-weighted sensitivity contributions come from emission probabilities, indicating a potential area of improvement.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/jendl5/pcc-bar.png}
+    \caption{The ten largest uncertainty-weighted \glspl{PCC} $U_{i,v}$ sorted by \gls{DNP} and associated \gls{DNP} value from ENDF/B-VII.1 nuclear data.}
+    \label{fig:jendl5-bar-uiv}
+\end{figure}
+
+
+Figure \ref{fig:pcc-charts-jendl5} shows the $PCC_i$ and $U_i$ plotted on the chart of the nuclides.
+These plots do not limit to only the top ten largest values, but instead show how all of the values compare among each other.
+The values of $U_i$ are all smaller than those of $PCC_i$, because all of the relative uncertainties are less than 1.
+There are similar patterns as discussed in Section \ref{sec:iaea-jendl5}, with horizontal peaks in the $PCC_i$ for bromine, rubidium, and iodine.
+
+\begin{figure}[!ht]
+\centering
+\subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/jendl5/chart_PCC.png}
+}
+\hspace{0.05\linewidth}
+\subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
+  \includegraphics[width=0.45\linewidth]{images/jendl5/chart_PCC_uncertainty.png}
+}
+\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using JENDL-5 nuclear data.}
+\label{fig:pcc-charts-jendl5}
+\end{figure}
+
+\FloatBarrier
