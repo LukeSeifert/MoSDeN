@@ -15,7 +15,7 @@
 
 \begin{document}
 
-\title{Investigation of Delayed Neutron Precursor Data Uncertainties for Microscopic and Summation Calculations} %title of paper
+\title{Investigation of Delayed Neutron Precursor Data Uncertainties for Microscopic Calculations} %title of paper
 
 % Use the \addAuthor macro to add authors in the order they should appear. The second argument corresponds to
 % the affiliation declared below.
@@ -64,10 +64,9 @@ There are several different methods for calculating these \gls{DNP} groups, and 
 This approach uses experimental data for individual \glspl{DNP} combined together computationally.
 One strength of this approach is that it provides insight into how each individual \gls{DNP} contributes to the \gls{DNP} group parameters.
 However, this strength is also a weakness, as it relies on the nuclear data for every \gls{DNP} individually, which means a few large uncertainties in the various \glspl{DNP} can lead to uncertain results for the \gls{DNP} group parameters.
-There is also a related, and similar approach, called the summation approach.
-This approach uses the same data, and is used for calculation of summed parameters such as the total delayed neutron yield $\nu_d$ and the average half-life $\bar\tau$.
+The microscopic approach can also be used for calculation of summed parameters such as the total delayed neutron yield $\nu_d$ and the average half-life $\bar\tau$ directly from the \glspl{DNP} data, generally referred to as conducting a summation, or aggregate, calculation.
 
-There have been investigations in the literature that use the microscopic and summation approaches to evaluate sensitivities and compare different datasets \cite{foligno_summation_2018, foligno_new_2019, mills2014calculation}.
+There have been investigations in the literature that use the microscopic approach to evaluate sensitivities and compare different datasets \cite{foligno_summation_2018, foligno_new_2019, mills2014calculation}.
 Although these analyses are informative and show many of the differences between datasets, they do not discuss the importance of \glspl{DNP} in regards to their effect on the calculated \gls{DNP} group parameters but instead based on their contribution to the total delayed neutron yield.
 Generally the larger the delayed neutron yield of a \gls{DNP}, the more important it is, but these analyses do not investigate how the uncertainty in each \gls{DNP} propagates through to calculated \gls{DNP} group parameters.
 
@@ -130,11 +129,11 @@ This data is passed into the solver, which then converts these data into \gls{DN
 
 \subsection{Microscopic and Summation Calculations}
 
-For the microscopic and summation methods, there are two distinct solution methods.
-The summation method is the simpler of the two, and simply involves summing the nuclear data to calculate the total delayed neutron yield and average half-life.
-The microscopic method is more in-depth, as it is used to calculate the \gls{DNP} group parameters, which give time-dependency and can be used to calculate the total delayed neutron yield and average half-life.
+Within the microscopic approach, there are two distinct processes that can be used.
+The summation calculation is the simpler of the two, and simply involves summing the nuclear data to calculate the total delayed neutron yield and average half-life.
+The full microscopic approach is used to calculate the \gls{DNP} group parameters, which give time-dependency and can be used to calculate the total delayed neutron yield and average half-life from the \gls{DNP} group parameters as well as the \gls{DNP} nuclear data.
 
-Equations \eqref{eq:summation-tdny} and \eqref{eq:avg-hl} are the equations for the total delayed neutron yield and average half-life, respectively, calculated using the summation approach as:
+Equations \eqref{eq:summation-tdny} and \eqref{eq:avg-hl} are the equations for the total delayed neutron yield and average half-life, respectively, from the summation calculation as:
 \begin{equation}
     \nu_d = \sum_{i=1}^I P_{n,i} CFY_i,
     \label{eq:summation-tdny}
@@ -145,7 +144,7 @@ and
     \label{eq:avg-hl}
 \end{equation}
 
-The uncertainties for each calculation can be propagated as shown in Equations \eqref{eq:summation-tdny-delta} and \eqref{eq:avg-hl-delta} as: 
+The uncertainties for each calculation are propagated as shown in Equations \eqref{eq:summation-tdny-delta} and \eqref{eq:avg-hl-delta} as: 
 \begin{equation}
     \Delta \nu_d^2 = \sum_{i=1}^I (\Delta P_{n,i} CFY_i)^2 + (P_{n,i} \Delta CFY_i)^2,
     \label{eq:summation-tdny-delta}
@@ -160,7 +159,7 @@ These calculations are automated in the solver using the uncertainties Python pa
 The standard deviation propagated in the summation calculation are given by the dataset used, and any values without a standard deviation or a standard deviation of 0 use a value of $10^{-12}$.
 
 The microscopic approach enables calculation of time-dependent parameters by calculating the delayed neutron count rate from each \gls{DNP} after irradiation of a fissile nuclide.
-The solver first calculates the concentration of each \gls{DNP}, followed by the delayed neutron count rate, and finally uses the Scipy optimize module to calculate the six \gls{DNP} group parameters that optimally fit that delayed neutron count rate \cite{scipy}.
+The solver first calculates the concentration of each \gls{DNP}, followed by the delayed neutron count rate, and finally uses the SciPy optimize module to calculate the six \gls{DNP} group parameters that optimally fit that delayed neutron count rate \cite{scipy}.
 To calculate sensitivities and propagate uncertainties, a Monte Carlo sampling technique is used \cite{foligno_new_2019}.
 The solution is calculated with tolerances of $10^{-11}$ for ten randomly sampled initial conditions for the nominal nuclear data, which is then passed as an initial guess for each of the sampled Monte Carlo solves.
 The concentrations have the uncertainty propagated using the uncertainties package, and then in the count rate calculation the concentration $N_i$, half-life $\tau_i$, and emission probability $P_{n,i}$ are sampled using a normal distribution with a different random value for each \gls{DNP}.
@@ -361,6 +360,7 @@ This agrees with the same result calculated in this work of $0.01609 \pm 0.0008$
 This work is also verified with the total delayed neutron yield $\nu_d$ from Leconte et al. from JEFF-3.1.1 cumulative fission yields combined with ENDF/B-VII.1 emission probabilities and half-lives.
 Specifically, this work calculates a value of $0.0157 \pm 0.0008$, which exactly agrees with the results from Leconte et al. \cite{leconte2020new}.
 Finally, there is also agreement with Huynh et al. using the JEFF-3.1.1 data to calculate the total delayed neutron yield of $0.0148 \pm 0.0008$ \cite{huynh2014calculation}.
+The verification uses the results from summation calculations, but each section demonstrates that the summation calculation results offer agreement within uncertainty bounds between the \gls{DNP} group parameter evaluated values and the summation calculation values.
 
 For the first set of results, additional information will be included that is not included in the other sections.
 Specifically, the delayed neutron count rate will be provided as well as a comparison to the count rate from calculated from other \gls{DNP} group parameters in the literature.

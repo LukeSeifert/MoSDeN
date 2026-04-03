@@ -68,6 +68,7 @@ Among the values shown in Table \ref{tab:total-delnu-compare-net} and based on t
 \begin{table}[!h]
     \centering
     \caption{Total delayed neutron yields $\nu_d$ from 100 thermal fissions of $^{235}$U.}
+    \begin{threeparttable}
     \begin{tabular}{ll}
         \hline
        Data & $\nu_d$ $[-]$ \\
@@ -86,17 +87,23 @@ Among the values shown in Table \ref{tab:total-delnu-compare-net} and based on t
         IAEA/JENDL-5 \cite{DIMITRIOU2021144, iwamoto2023japanese} & $1.596 \pm 0.09$\\
         ENDF/B-VII.1 \cite{chadwick2011endf} & $1.906 \pm 0.11$\\
         ENDF/B-VIII.0 \cite{Brown20181} & $2.023 \pm 0.11$\\
+        ENDF/B-VIII.1 \cite{nobreENDFBVIII12024}\tnote{*} & $2.023 \pm 0.11$\\
         JEFF-3.1.1 \cite{santamarina2009jeff} & $1.477 \pm 0.08$\\
         JENDL-5 \cite{iwamoto2023japanese} & $1.597 \pm 0.09$ \\
         \hline
     \end{tabular}
+    \begin{tablenotes}
+    \small
+    \item[*] ENDF/B-VIII.1 did not resolved the delayed neutron yield discrepancy present in the previous ENDF versions.
+    \end{tablenotes}
+    \end{threeparttable}
     \label{tab:total-delnu-compare-net}
 \end{table}
 
 \subsubsection{Nuclear Data Comparisons}
 
 The results thus far have indicated potential discrepancies in the ENDF cumulative fission yields for \glspl{DNP}.
-To investigate this, cumulative fission yield differences between JENDL-5 and ENDF/B-VIII.0 are compared for the \glspl{DNP} with the largest delayed neutron yield $\nu_d(I)$ contribution differences.
+To investigate this, cumulative fission yield differences between JENDL-5 and ENDF/B-VIII.0\footnote{Analysis with ENDF/B-VIII.1 gives the same results.} are compared for the \glspl{DNP} with the largest delayed neutron yield $\nu_d(I)$ contribution differences.
 This analysis showed there are two \glspl{DNP} alone that account for 67\% of the delayed neutron yield difference: $^{86}$As and $^{137}$Sb.
 The $^{86}$As yield difference primarily comes from the cumulative fission yield difference, which is $540 \pm 90$ $pcm$ larger in ENDF/B-VIII.0 than JENDL-5, and leads to a delayed neutron yield difference of $191 \pm 32$ $pcm$.
 The discrepancy between the $^{86}$As in ENDF data has been reported on previously for ENDF/B-VII.0 and ENDF/B-VII.1, respectively \cite{foligno_new_2019, mills2014calculation}.
