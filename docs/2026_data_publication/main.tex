@@ -103,8 +103,8 @@ The \gls{DNP} group parameters have the following data:
 \end{align}
 The delayed neutron yield for each group $\nu_{d,k}$ combines the emission probabilities and cumulative fission yields, representing the number of delayed neutrons emitted from group $k$ from a single fission.
 
-The datasets used in this work are given in Table \ref{tab:datasources}.
-The \gls{IAEA} beta-delayed neutron emission database does not have cumulative fission yield data combined with it, though analyses using the data use JEFF-3.1.1 cumulative fission yields \cite{DIMITRIOU2021144}.
+The datasets used in this work are given in Table \ref{tab:datasources}, including two different \gls{ENDF} datasets, the beta-delayed neutron emission database from the \gls{IAEA}, and \gls{JENDL}-5.
+The \gls{IAEA} beta-delayed neutron emission database does not have cumulative fission yield data combined with it, though analyses using the data use \gls{JEFF}-3.1.1 cumulative fission yields \cite{DIMITRIOU2021144}.
 For the analyses in this work, the cumulative fissions yields from all of the datasets will be used and compared against to offer a comprehensive analysis.
 
 \begin{table}[H]
@@ -116,7 +116,7 @@ For the analyses in this work, the cumulative fissions yields from all of the da
     Data name & Year & Source & $\tau_i$ & $P_{n,i}$ & $CFY_i$\\
     \hline
       \gls{ENDF}/B-VII.1 & 2011 & \cite{chadwick2011endf} & Yes & Yes & Yes\\
-      \gls{JEFF} 3.1.1 & 2017 & \cite{plompen2020joint} & Yes & Yes & Yes\\
+      \gls{JEFF}-3.1.1 & 2017 & \cite{plompen2020joint} & Yes & Yes & Yes\\
       \gls{IAEA} database & 2018 & \cite{DIMITRIOU2021144} & Yes & Yes & No\\
       \gls{ENDF}/B-VIII.0 & 2018 & \cite{Brown20181} & Yes & Yes & Yes\\
       \gls{JENDL}-5 & 2021 & \cite{iwamoto2023japanese} & Yes & Yes & Yes\\
