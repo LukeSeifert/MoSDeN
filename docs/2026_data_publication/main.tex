@@ -42,16 +42,16 @@
 \titlePage
 
 \begin{abstract}
-This paper presents an analysis on the sensitivity of \gls{DNP} group parameters, group half-lives $\tau_k$ and yields $\nu_{d,k}$, and summed delayed neutron yields to uncertainties in their nuclear data for various datasets, including the \gls{IAEA} beta-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, JEFF-3.1.1, and JENDL-5.
+This paper presents an analysis on the sensitivity of \gls{DNP} group parameters, half-lives $\tau_k$ and yields $\nu_{d,k}$, to uncertainties in their nuclear data using thermal fission of $^{235}$U for various datasets: the \gls{IAEA} beta-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, JEFF-3.1.1, and JENDL-5.
 These uncertainty-weighted sensitivities provide a detailed view of which \glspl{DNP} need more accurate data such that analyses using individual \glspl{DNP}, such as microscopic group parameter formulation and summation calculations, may be more accurate.
 Improving the accuracy of these analyses is of particular importance for kinetics models, which rely on accurate \gls{DNP} group parameters.
 The microscopic approach for group parameter calculation is useful for providing insight into how each \gls{DNP} contributes to delayed neutron emission, but it requires accurate nuclear data. 
 The analyses conducted in this work reveal several \glspl{DNP} that correlate strongly with the \gls{DNP} group parameters, indicating a need for more accurate data for those \glspl{DNP}.
 There are also \glspl{DNP} which have large uncertainties and vary significantly between datasets which also warrant additional attention.
-This paper informs which \glspl{DNP} are in need of updates to their data for various nuclear datasets.
+Large discrepancies are shown in ENDF datasets for $^{85}$As, $^{86}$As, $^{100}$Rb, and $^{137}$Sb; under prediction of the delayed neutron yield $\nu_d$ in JEFF-3.1.1 correlates to many small discrepancies in various \glspl{DNP}; and JENDL-5 is shown to offer good agreement with experimental and calculated delayed neutron yields.
 \end{abstract}
 
-
+\glsresetall
 
 \section{Introduction}
 
@@ -60,18 +60,18 @@ To accurately model these dynamics, several different effects must be included: 
 These effects are well understood and have been simplified using various approximations.
 For example, the delayed neutrons are treated as having six to eight sources, or \gls{DNP} groups, even though in reality there are hundreds of precursor nuclides that decay and emit these delayed neutrons \cite{brady1988evaluation}.
 
-There are several different methods for calculating these \gls{DNP} groups, and in this work the microscopic approach is of particular interest \cite{d2002review, rudstam2002delayed, wilson2002delayed, brady1989delayed, mills2014calculation, huynh2014calculation, foligno_new_2019}.
+There are several different methods for calculating these \gls{DNP} groups, and in this work the microscopic approach is of particular interest \cite{d2002review, rudstam2002delayed, wilson2002delayed, brady1989delayed, mills2014calculation, huynh2014calculation, foligno_new_2019, piksaikin_new_2019}.
 This approach uses experimental data for individual \glspl{DNP} combined together computationally.
 One strength of this approach is that it provides insight into how each individual \gls{DNP} contributes to the \gls{DNP} group parameters.
 However, this strength is also a weakness, as it relies on the nuclear data for every \gls{DNP} individually, which means a few large uncertainties in the various \glspl{DNP} can lead to uncertain results for the \gls{DNP} group parameters.
-The microscopic approach can also be used for calculation of summed parameters such as the total delayed neutron yield $\nu_d$ and the average half-life $\bar\tau$ directly from the \glspl{DNP} data, generally referred to as conducting a summation, or aggregate, calculation.
+The microscopic approach can also be used for calculation of summed parameters such as the total delayed neutron yield $\nu_d$ and the average half-life $\bar\tau$ directly from the \gls{DNP} data, generally referred to as conducting a summation, or aggregate, calculation.
 
 There have been investigations in the literature that use the microscopic approach to evaluate sensitivities and compare different datasets \cite{foligno_summation_2018, foligno_new_2019, mills2014calculation}.
 Although these analyses are informative and show many of the differences between datasets, they do not discuss the importance of \glspl{DNP} in regards to their effect on the calculated \gls{DNP} group parameters but instead based on their contribution to the total delayed neutron yield.
 Generally the larger the delayed neutron yield of a \gls{DNP}, the more important it is, but these analyses do not investigate how the uncertainty in each \gls{DNP} propagates through to calculated \gls{DNP} group parameters.
 
-This work seeks to expand upon these previous analyses by using the microscopic approach in combination with Monte Carlo stochastic sampling of nuclear data uncertainties to evaluate uncertainty-weighted sensitivities of individual \gls{DNP}'s to \gls{DNP} group half-lives and delayed neutron yields.
-These results indicate which \glspl{DNP} in different datasets have large impacts on the \gls{DNP} group parameters, as well as which \gls{DNP} have both large impacts and large uncertainties relative to those impacts.
+This work seeks to expand upon these previous analyses by using the microscopic approach in combination with Monte Carlo stochastic sampling of nuclear data uncertainties to evaluate uncertainty-weighted sensitivities of individual \glspl{DNP} to \gls{DNP} group half-lives and delayed neutron yields.
+These results indicate which \glspl{DNP} in different datasets have large impacts on the \gls{DNP} group parameters, as well as which \glspl{DNP} have both large impacts and large uncertainties relative to those impacts.
 By providing the data of importance for these datasets, future analyses can target experiments to produce those specific data to further improve \gls{DNP} group parameters and kinetics models.
 
 
@@ -83,15 +83,16 @@ The solver itself can be considered a converter of the \gls{DNP} nuclear data in
 \subsection{DNP Nuclear Data Treatment}
 
 There are two different sets of data used in this work: the nuclear data for each individual \gls{DNP} and the calculated \gls{DNP} group parameters that approximate those individual \glspl{DNP}.
-The $I$ \gls{DNP} have the following data:
+The $I$ \glspl{DNP} have the following data:
 \begin{align}
+    I &= \text{the total number of \gls{DNP} [-]} \nonumber \\
     CFY_i &= \text{the cumulative fission yield of \gls{DNP} $i$ [-]} \nonumber \\
     P_{n,i} &= \text{the emission probability of \gls{DNP} $i$ [-]} \nonumber \\
     \tau_i &= \text{the half-life of \gls{DNP} $i$ $[s]$} \nonumber \\
     \chi_{d,i} &= \text{the delayed neutron energy spectrum from \gls{DNP} $i$ [-].} \nonumber
 \end{align}
 The cumulative fission yield represents the total production of that nuclide for a single fission, including decays that eventually lead to that nuclide.
-The emission probability is the probability for a delayed neutron to be emitted from the \gls{DNP}\footnote{This can alternatively be considered the number of delayed neutrons emitted per radioactive decay.}.
+The emission probability is the probability for a delayed neutron to be emitted from a given \gls{DNP}\footnote{This can alternatively be considered the number of delayed neutrons emitted per radioactive decay.}.
 For this work, the delayed neutron energy spectra are not investigated, as it is considered out of scope.
 
 The \gls{DNP} group parameters have the following data:
@@ -171,11 +172,10 @@ The concentration of each \gls{DNP} is calculated assuming the sample has reache
 \end{equation}
 where
 \begin{align}
-    \lambda_i &= \frac{\ln{2}}{\tau_i} \nonumber\\
-    &= \text{the decay constant for \gls{DNP} $i$ $[s^{-1}]$.} \nonumber 
+    \lambda_i &= \text{the decay constant for \gls{DNP} $i$ $[s^{-1}]$.} \nonumber 
 \end{align}
 
-The delayed neutron count rate can then be calculated as shown in Equation \eqref{eq:count-rate} as:
+The delayed neutron count rate can then be calculated as shown in Equation~\eqref{eq:count-rate} as:
 \begin{equation}
     \dot{n}_d(t) = \sum_{i=1}^I P_{n,i} N_i(t=\infty) e^{-\lambda_i t}.
     \label{eq:count-rate}
@@ -183,13 +183,13 @@ The delayed neutron count rate can then be calculated as shown in Equation \eqre
 The count rate is first calculated using the nominal nuclear data before this calculation is repeated using the independently, normally sampled nuclear data for each \gls{DNP}.
 
 Once the count rate is calculated, a non-linear least squares calculation can be used to determine the combination of \gls{DNP} group parameters most optimally fits the calculated delayed neutron count rate.
-The coefficient matrix and solution vector for the non-linear least squares solve are based on the \gls{DNP} group parameter fit for the delayed neutron count rate, given in Equation \eqref{eq:count-rate-group} as \cite{wilson2002delayed}:
+The coefficient matrix and solution vector for the non-linear least squares solve are based on the \gls{DNP} group parameter fit for the delayed neutron count rate, given in Equation~\eqref{eq:count-rate-group} as \cite{wilson2002delayed}:
 \begin{equation}
     \dot{n}_d(t) = \sum_{k=1}^K \nu_{d,k} e^{-\lambda_i t}.
     \label{eq:count-rate-group}
 \end{equation}
 Once the delayed neutron count rate is acquired, an over-determined non-linear least squares approach is used to calculate the group yields and decays \cite{brady1988evaluation, chandler1969stepit, waldo1981delayed}.
-Equation \eqref{eq:lstsq} gives the general form of the least squares equation as:
+Equation~\eqref{eq:lstsq} gives the general form of the least squares equation as:
 \begin{equation}
 A \vec{x} \approx \vec{b},
 \label{eq:lstsq}
@@ -200,7 +200,7 @@ where
     x &= \text{the solution vector $[\# \cdot s^{-1}]$} \nonumber \\
     b &= \text{the target vector $[\# \cdot s^{-1}]$.} \nonumber
 \end{align}
-Equation \eqref{eq:lambda} gives the coefficient matrix as:
+Equation~\eqref{eq:lambda} gives the coefficient matrix as:
 \begin{equation}
 A = \begin{bmatrix}
 e^{-\lambda_1 t_0} & e^{-\lambda_2 t_0} & \hdots &  e^{-\lambda_K t_0}\\
@@ -210,7 +210,7 @@ e^{-\lambda_1 t_m} & e^{-\lambda_2 t_m} &  \hdots  & e^{-\lambda_K t_m}\\
 \end{bmatrix}.
 \label{eq:lambda}
 \end{equation}
-The solution vector contains only the group yields, given in Equation \eqref{eq:lstsq-solvec} as:
+The solution vector contains only the group yields, given in Equation~\eqref{eq:lstsq-solvec} as:
 \begin{equation}
 \vec{x} = 
 \begin{bmatrix}
@@ -221,7 +221,7 @@ The solution vector contains only the group yields, given in Equation \eqref{eq:
 \end{bmatrix}.
 \label{eq:lstsq-solvec}
 \end{equation}
-The target vector contains the delayed neutron count rate data for $m$ time-steps, shown in Equation \eqref{eq:lstsq-target} as:
+The target vector contains the delayed neutron count rate data for $m$ time-steps, shown in Equation~\eqref{eq:lstsq-target} as:
 \begin{equation}
 \vec{b} = 
 \begin{bmatrix}
@@ -234,12 +234,12 @@ The target vector contains the delayed neutron count rate data for $m$ time-step
 \end{equation}
 
 Using least squares with a non-relative residual would lead to early time-step count rates dominating due to their larger magnitudes.
-This is resolved by minimizing a relative residual, given by Equation \eqref{eq:residual} as:
+This is resolved by minimizing a relative residual, given by Equation~\eqref{eq:residual} as:
 \begin{equation}
     r = \min_x \left| \left| \frac{\vec{b} - A\vec{x}}{\vec{b}} \right| \right|_2,
     \label{eq:residual}
 \end{equation}
-where the Euclidean norm, $||\cdot||_2$, is defined in Equation \ref{eq:euc-norm} as:
+where the Euclidean norm, $||\cdot||_2$, is defined in Equation~\ref{eq:euc-norm} as:
 \begin{equation}
     ||\vec{x}||_2 = \sqrt{x_1^2 + \cdots + x_n^2}.
     \label{eq:euc-norm}
@@ -264,17 +264,17 @@ To differentiate between the calculation of these parameters using $I$ \glspl{DN
 
 The \gls{PCC} is used to analyze the \gls{DNP} group parameters calculated from the solver for various unique combinations of sampled \gls{DNP} nuclear data and is calculated using the SciPy stats module \cite{scipy}.
 The \gls{PCC} measures the linear correlation between the \gls{DNP} data and the calculated \gls{DNP} group parameters.
-A measure of 0 indicates there is no correlation, a measure of +1 indicates perfect positive linear correlation, and a measure of -1 indicates perfect negative linear correlation.
-So, for example, $^{87}$Br can be expected to have a \gls{PCC} near +1 for the impact of its half-life $\tau_i$ on the half-life of group one\footnote{Group one is the longest-lived \gls{DNP} group.} $\tau_1$.
+A measure of 0 indicates there is no correlation, a measure of +1 indicates perfect positive linear correlation, and a measure of $-1$ indicates perfect negative linear correlation.
+For example, $^{87}$Br can be expected to have a \gls{PCC} near +1 for the impact of its half-life $\tau_i$ on the half-life of group one\footnote{Group one is the longest-lived \gls{DNP} group.} $\tau_1$.
 This is because $^{87}$Br is the longest-lived \gls{DNP}\footnote{There are other \glspl{DNP} with longer half-lives, such as $^{211}$Tl, $^{210}$Tl, and $^{210}$Hg, but they live only tens of seconds longer and generally have negligible concentrations.}, so the longest-lived \gls{DNP} group will be highly dependent on its nuclear data.
 
 The \gls{PCC} was selected to measure variation in the group parameters because the sensitivities did not generally have strong non-linear behavior.
-The non-linear least squares will result in non-linear effects, but linear correlations dominate in the observed sensitivities.
+The non-linear least squares fit will result in non-linear effects, but linear correlations dominate in the observed sensitivities.
 The \glspl{PCC} are calculated for each \gls{DNP} group half-life $\tau_k$ and delayed neutron yield $\nu_{d,k}$ based on changes in each \glspl{DNP}' concentration $N_i$, half-life $\tau_i$, and emission probability $P_{n,i}$.
-This can be represented as $PCC_{i,v,k}$, where $i$ represents the \gls{DNP} $i$; $v$ represents the \gls{DNP} value, such as the half-life, emission probability, or concentration; and $k$ represents the \gls{DNP} group.
+The \gls{PCC} for each specific combination can be represented as $PCC_{i,v,k}$, where $i$ represents the \gls{DNP} $i$; $v$ represents the \gls{DNP} value, such as the half-life, emission probability, or concentration; and $k$ represents the \gls{DNP} group.
 
-To improve this analysis, some of this data was combined to form more concise coefficients.
-The total \gls{PCC} for a specific \gls{DNP} $i$ is given in Equation \eqref{eq:pcc-sum} is represented as:
+To improve the analysis in this work, the $PCC_{i,v,k}$ data was combined to form more concise coefficients.
+The total \gls{PCC} for a specific \gls{DNP} $i$ is given in Equation~\eqref{eq:pcc-sum} is represented as:
 \begin{equation}
     PCC_{i} = \sum_v \sum_k \left|PCC_{i,v,k}\right|,
     \label{eq:pcc-sum}
@@ -287,7 +287,7 @@ where
 \end{align}
 
 These \glspl{PCC} can be combined with the relative uncertainty associated with each \gls{DNP} to capture the nuclides which both impact the \gls{DNP} group parameters most significantly and have large uncertainties.
-Specifically, this is calculated in Equation \eqref{eq:Uiv} as the relative uncertainties times the magnitude of the \gls{PCC} for a \gls{DNP} $i$ and each \gls{DNP} value $v$ as $U_{i}$:
+Specifically, this is calculated in Equation~\eqref{eq:Uiv} as the relative uncertainties times the magnitude of the \gls{PCC} for a \gls{DNP} $i$ and each \gls{DNP} value $v$ as $U_{i}$:
 \begin{equation}
     U_{i} = \sum_v \frac{\sigma_{i,v}}{x_{i,v}} \sum_k\left|PCC_{i,v,k}\right|,
     \label{eq:Uiv}
@@ -299,7 +299,7 @@ where
     x_{i,v} &= \text{the \gls{DNP} value $v$, representing the half-life, emission probability,} \nonumber \\
     &\text{\;\;\;\;\;or concentration of \gls{DNP} $i$ [-].} \nonumber
 \end{align}
-Equation \eqref{eq:Uiv} shows that the relative uncertainty for each nuclear data component that is randomly sampled, such as the emission probability, is multiplied by the summed magnitudes of the \gls{PCC} for each \gls{DNP} group parameter using that data.
+Equation~\eqref{eq:Uiv} shows that the relative uncertainty for each nuclear data component that is randomly sampled, such as the emission probability, is multiplied by the summed magnitudes of the \gls{PCC} for each \gls{DNP} group parameter using that data.
 These values are then all summed, giving a total measure of the relative uncertainty-weighted \gls{PCC} for each \gls{DNP}, which indicates how much attention that specific \gls{DNP} needs.
 This metric is larger when:
 \begin{itemize}
@@ -308,7 +308,7 @@ This metric is larger when:
 \end{itemize}
 
 This can also be represented for any individual \gls{DNP} value by removing the summation over $v$.
-This is shown in Equation \eqref{eq:Uiv-no-sum} which gives the uncertainty-weighted \gls{PCC} for a given \gls{DNP} $i$ and nuclear data $v$ as:
+This is shown in Equation~\eqref{eq:Uiv-no-sum} which gives the uncertainty-weighted \gls{PCC} for a given \gls{DNP} $i$ and nuclear data $v$ as:
 \begin{equation}
     U_{i,v} = \frac{\sigma_{i,v}}{x_{i,v}} \sum_k\left|PCC_{i,v,k}\right|.
     \label{eq:Uiv-no-sum}
@@ -331,7 +331,7 @@ Each sub-section will contain the following analyses for each dataset:
 Table \ref{tab:default-params} shows the default parameters used for each simulation.
 
 
-\begin{table}[]
+\begin{table}[H]
     \centering
     \caption{Default parameters for each microscopic calculation.}
     \begin{tabular}{lrl}
@@ -354,7 +354,7 @@ For that analysis, the JENDL-5 cumulative fission yields are used since they are
 However, part of the analysis will also investigate the effects of hybrid datasets that vary the emission probability, half-life, and cumulative fission yield data.
 
 This work is also verified with total delayed neutron yields from a related \gls{IAEA} \gls{CRP} analysis \cite{DIMITRIOU2021144}.
-They present a benchmark problem using JEFF-3.1.1 cumulative fission yields with ENDF/B-VIII.0 emission probabilities and half-lives, which is replicated in this work \cite{santamarina2009jeff, Brown20181}.
+The analysis presented a benchmark problem using JEFF-3.1.1 cumulative fission yields with ENDF/B-VIII.0 emission probabilities and half-lives, which is replicated in this work \cite{santamarina2009jeff, Brown20181}.
 The four groups in the study are \gls{CEA}, \gls{CIEMAT}, the \gls{JAEA}, and the University of Nantes, all of whom reported the same result of $0.01609 \pm 0.0008$ for the total delayed neutron yield from thermal fission of $^{235}$U.
 This agrees with the same result calculated in this work of $0.01609 \pm 0.0008$.
 This work is also verified with the total delayed neutron yield $\nu_d$ from Leconte et al. from JEFF-3.1.1 cumulative fission yields combined with ENDF/B-VII.1 emission probabilities and half-lives.
@@ -404,13 +404,14 @@ Additionally, specific \gls{DNP} examples will be provided demonstrating the \gl
 
 This work presented analyses using the microscopic approach to compare \gls{DNP} nuclear data between the IAEA beta-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, JEFF-3.1.1, JENDL-5, and hybrid datasets.
 These results, when compared with other summation calculations in the literature and experimental data, indicate that each dataset has specific \glspl{DNP} that have large relative uncertainties with a greater impact on the calculation of \gls{DNP} group parameters and delayed neutron emission rates than other \glspl{DNP}.
+
 Large differences in ENDF datasets that lead to discrepancies when comparing results with other summation calculations and experimental data are presented, specifically indicating problematic nuclides of $^{85}$As, $^{86}$As, $^{100}$Rb, $^{137}$Sb.
 The under-prediction of JEFF-3.1.1 for calculation of the total delayed neutron yield is also presented, indicating that the largest individual differences come from $^{94}$Rb, $^{98m}$Y, $^{85}$As, and $^{89}$Br; however, the majority of the difference comes from small contributions from many \glspl{DNP} both present in the dataset and lack of contribution from \glspl{DNP} missing from the dataset.
 The JENDL-5 dataset is shown to have good agreement with experiments and other calculations in the literature, including when using the IAEA beta-delayed neutron emission database.
 The \glspl{DNP} with the largest uncertainty-weighted sensitivities that affect delayed neutron emission rates and calculated \gls{DNP} group parameters are provided for each dataset evaluated in this work.
 A discussion on hybrid datasets is also provided, which provides evidence that cumulative fission yields in ENDF datasets contribute to larger delayed neutron yields than other results in the literature.
 
-The results in this work offer a new perspective for identifying \gls{DNP} in nuclear datasets that are in need of reduced uncertainties or lead to discrepancies with other results in the literature.
+The results in this work offer a new perspective for identifying \glspl{DNP} in nuclear datasets that are in need of reduced uncertainties or lead to discrepancies with other results in the literature.
 These results can be leveraged to resolve nuclear data discrepancies and conduct experiments to improve the most relevant \gls{DNP} nuclear data.
 Through these targeted improvements to the nuclear data, future calculations using the individual \gls{DNP} nuclear data can be improved more rapidly.
 These improvements will improve the accuracy of transient simulations for nuclear reactors and enable more in-depth analyses on \gls{DNP} behavior.
