@@ -12,11 +12,14 @@ There are a total of 220 \glspl{DNP} in this dataset, and five of them capture o
 \end{figure}
 
 
-Figure \ref{fig:count-rate-iaea-jendl} shows the histogram for the sampled group one half-lives $\tau_1$ as well as how the delayed neutron count rate compares to those using \gls{DNP} group parameters from the literature \cite{keepin1957delayed, brady1989delayed, synetos1983delayed}.
+Figure \ref{fig:count-rate-iaea-jendl}(a) shows the histogram for the sampled group one half-lives $\tau_1$ as well as how the delayed neutron count rate compares to those using \gls{DNP} group parameters from the literature \cite{keepin1957delayed, brady1989delayed, synetos1983delayed}.
 The histogram shows that the group parameters follow a normal distribution as the nuclear data for each \gls{DNP} is randomly sampled, with the group half-life as the mean of that normal distribution.
 Although not shown, the other group parameters follow this same trend.
-The Keepin normalized delayed neutron count rate shows how the delayed neutron count rate calculated in this work, both for every count rate from the sampled data and from the group fit using the calculated \gls{DNP} group parameters compare.
+
+Figure \ref{fig:count-rate-iaea-jendl}(b) shows the Keepin normalized delayed neutron count rate from the Keepin et al. six \gls{DNP} group parameter fit \cite{keepin1957delayed}.
+The figure compares the delayed neutron count rate calculated in this work both for every count rate from the sampled data and from the group fit using the calculated \gls{DNP} group parameters.
 A value of 1 at any given time indicates the delayed neutron count rate at that time perfectly matches the delayed neutron count rate from the Keepin et al. \gls{DNP} group parameters.
+This is why the Keepin 6-group Fit data is unity at all times, as it is always self-equivalent.
 These results show that the Keepin et al. \gls{DNP} group parameters agree well with group parameters calculated using the \gls{IAEA} beta-delayed neutron emission database and JENDL-5 cumulative fission yields, with differences smaller than those from Brady and England and from Synetos and Williams.
 
 \begin{figure}[!ht]
@@ -25,14 +28,17 @@ These results show that the Keepin et al. \gls{DNP} group parameters agree well 
   \includegraphics[width=0.45\linewidth]{images/iaea/MC_group1_half_life.png}
 }
 \hspace{0.05\linewidth}
-\subfloat[The delayed neutron count rate as a function of time relative to the Keepin et al. \gls{DNP} group parameter delayed neutron count rate for \gls{DNP} six group parameters from this work, Brady and England, and Synetos and Williams \cite{keepin1957delayed, brady1989delayed, synetos1983delayed}.]{
+\subfloat[The delayed neutron count rate as a function of time relative to the Keepin et al. \gls{DNP} group parameter delayed neutron count rate (such that the Keepin 6-Group Fit is unity at all points in time). Comparison is made between the six \gls{DNP} group parameters from this work, Brady and England, and Synetos and Williams \cite{keepin1957delayed, brady1989delayed, synetos1983delayed}.]{
   \includegraphics[width=0.45\linewidth]{images/iaea/Keepin_counts.png}
 }
-\caption{These plots show how the 5000 samples lead to a distribution of \gls{DNP} group parameters and delayed neutron count rates from JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities. The \gls{DNP} group one half-life $\tau_1$ shows a normal distribution about a mean, while the Keepin et al. normalized count rate shows this work offers good agreement with the literature.}
+\caption{
+%These plots show how the 5000 samples lead to a distribution of \gls{DNP} group parameters and delayed neutron count rates from . 
+These plots show the distribution of the 5000 randomly sampled results using JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities.
+The \gls{DNP} group one half-life $\tau_1$ shows a normal distribution about a mean, while the Keepin et al. normalized count rate shows this work offers good agreement with the literature.}
 \label{fig:count-rate-iaea-jendl}
 \end{figure}
 
-Figure \ref{fig:sens-iaea-jendl} shows an example for how the \glspl{PCC} are calculated using the 5000 samples.
+Figure \ref{fig:sens-iaea-jendl} shows two examples for how the \glspl{PCC} are calculated using the 5000 samples.
 Each sample is represented as a single point at which the nuclear data is sampled from a normal distribution.
 Specifically for this figure, the samples are plotted as a function of the $^{137}$I half-life.
 Figure \ref{fig:sens-iaea-jendl}(a) shows how the group one \gls{DNP} half-life $\tau_1$ changes as a function of the $^{137}$I half-life.
@@ -56,6 +62,7 @@ These \gls{PCC} values are calculated for the emission probability, concentratio
 
 Table \ref{tab:iaea-jendl5-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
 The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
+
 
 
 \begin{table}[]

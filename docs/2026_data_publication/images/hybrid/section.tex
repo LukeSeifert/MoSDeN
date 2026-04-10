@@ -1,5 +1,5 @@
 
-The dataset used has a large affect on the total delayed neutron yield and average half-life values.
+The dataset used has a large effect on the total delayed neutron yield and average half-life values.
 Figure \ref{fig:hybrid-pure-compare} shows how the previously discussed datasets compare to each other.
 These results show that the ENDF/B-VII.1 and ENDF/B-VIII.0 datasets have delayed neutron yields $\nu_d(I)$ and average half-lives $\bar{\tau}(I)$ within uncertainty bounds of each other.
 However, the ENDF results are not consistent with the results from JEFF-3.1.1, JENDL-5, and the IAEA dataset using JENDL-5 cumulative fission yields.
@@ -18,7 +18,7 @@ However, the ENDF results are not consistent with the results from JEFF-3.1.1, J
 \end{figure}
 
 Figure \ref{fig:hybrid-iaea-compare} shows how the cumulative fission yields from the different datasets affect the results when the IAEA beta-delayed neutron emission database half-lives and emission probabilities are used.
-The results reflect those shown in Figure \ref{fig:hybrid-pure-compare}, where the JENDL-5 and JEFF-3.1.1 results are within uncertainty bounds while the ENDF results are within uncertainty bounds, but the two sets are not within uncertainty bounds of each other.
+The results reflect those shown in Figure \ref{fig:hybrid-pure-compare}: the ENDF datasets are within uncertainty bounds for the different versions, while the JEFF-3.1.1 and JENDL-5 datasets disagree with ENDF and agree with each other.
 
 \begin{figure}[!ht]
 \centering
@@ -105,7 +105,7 @@ Among the values shown in Table \ref{tab:total-delnu-compare-net} and based on t
 The results thus far have indicated potential discrepancies in the ENDF cumulative fission yields for the \glspl{DNP}.
 To investigate this, cumulative fission yield differences between JENDL-5 and ENDF/B-VIII.0\footnote{Analysis with ENDF/B-VIII.1 gives the same results.} are compared for the \glspl{DNP} with the largest delayed neutron yield $\nu_d(I)$ contribution differences.
 This analysis showed there are two \glspl{DNP} alone that account for 67\% of the delayed neutron yield difference: $^{86}$As and $^{137}$Sb.
-The $^{86}$As yield difference primarily comes from the cumulative fission yield difference, which is $540 \pm 90$ $pcm$ larger in ENDF/B-VIII.0 than JENDL-5, and leads to a delayed neutron yield difference of $191 \pm 32$ $pcm$.
+The $^{86}$As yield difference primarily comes from the cumulative fission yield difference, which is $540 \pm 90$ pcm larger in ENDF/B-VIII.0 than JENDL-5, and leads to a delayed neutron yield difference of $191 \pm 32$ pcm.
 The discrepancy between the $^{86}$As in ENDF data has been reported on previously for ENDF/B-VII.0 and ENDF/B-VII.1, respectively \cite{foligno_new_2019, mills2014calculation}.
 This yield difference is smaller in ENDF/B-VII.1, but that is because the emission probability in ENDF/B-VII.1 is $0.12$ instead of $0.36$ as it is in ENDF/B-VIII.0.
 
@@ -116,22 +116,22 @@ Of the \glspl{DNP} listed, only $^{94}$Rb and $^{137}$I have larger yields in JE
 
 For summation calculations, microscopic evaluations of the \gls{DNP} group parameters, or any simulations of delayed neutron emission rates using individual \gls{DNP}, these differences in the nuclear data are relevant to consider and account for when using ENDF data.
 The difference between JENDL-5 and JEFF-3.1.1 was also investigated to determine which \glspl{DNP} have the largest effect leading to JEFF-3.1.1 under-predicting the total delayed neutron yield.
-There is a 120 $pcm$ difference between JENDL-5 and JEFF-3.1.1 total delayed neutron yields.
+There is a 120 pcm difference between JENDL-5 and JEFF-3.1.1 total delayed neutron yields.
 As previously discussed in Section \ref{sec:jeff311}, JEFF-3.1.1 has only 136 \glspl{DNP} in its dataset, and 123 of those are present in JENDL-5.
-Those 123 that are in common have a total delayed neutron yield contribution in JEFF-3.1.1 that is 76 $pcm$ less than the same \glspl{DNP} in JENDL-5.
-The remaining 44 $pcm$ delayed neutron yield difference between JENDL-5 and JEFF-3.1.1 comes from the \glspl{DNP} the datasets do not have in common, as JENDL-5 has 257 \gls{DNP} with half-life, emission probability, and cumulative fission yield data while JEFF-3.1.1 has only 136.
+Those 123 that are in common have a total delayed neutron yield contribution in JEFF-3.1.1 that is 76 pcm less than the same \glspl{DNP} in JENDL-5.
+The remaining 44 pcm delayed neutron yield difference between JENDL-5 and JEFF-3.1.1 comes from the \glspl{DNP} the datasets do not have in common, as JENDL-5 has 257 \gls{DNP} with half-life, emission probability, and cumulative fission yield data while JEFF-3.1.1 has only 136.
 
 The difference between the JEFF-3.1.1 and JENDL-5 total delayed neutron yields does not come primarily come from one or two \glspl{DNP}, as was the case for the ENDF data difference.
-The top four \glspl{DNP} with the largest yield differences are $^{94}$Rb, $^{98m}$Y, $^{85}$As, and $^{89}$Br which are all present in both datasets and have both negative and positive differences\footnote{$^{94}$Rb is larger in JENDL-5 by 54 $pcm$, $^{98m}$Y is larger in JEFF-3.1.1 by 52 $pcm$, $^{85}$As is larger in JENDL-5 by 39 $pcm$, and $^{89}$Br is larger in JEFF-3.1.1 by 21 $pcm$.}.
+The top four \glspl{DNP} with the largest yield differences are $^{94}$Rb, $^{98m}$Y, $^{85}$As, and $^{89}$Br which are all present in both datasets and have both negative and positive differences\footnote{$^{94}$Rb is larger in JENDL-5 by 54 pcm, $^{98m}$Y is larger in JEFF-3.1.1 by 52 pcm, $^{85}$As is larger in JENDL-5 by 39 pcm, and $^{89}$Br is larger in JEFF-3.1.1 by 21 pcm.}.
 Instead, the difference comes from many small $\nu_d$ contributions from JEFF-3.1.1 that are smaller than those in JENDL-5.
 
-These small differences are displayed in Figure \ref{fig:hybrid-hist-jeff-jendl}, which shows the JENDL-5 delayed neutron yields subtracted from the JEFF-3.1.1 delayed neutron yields using histograms with bin widths of 10 $pcm$.
+These small differences are displayed in Figure \ref{fig:hybrid-hist-jeff-jendl}, which shows the JENDL-5 delayed neutron yields subtracted from the JEFF-3.1.1 delayed neutron yields using histograms with bin widths of 10 pcm.
 Figure \ref{fig:hybrid-hist-jeff-jendl}(a) shows the histogram for the 123 \glspl{DNP} present in both datasets.
-This histogram shows in the two largest bins of 0 to 10 $pcm$ and $-10$ to 0 $pcm$ there are 62 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of 0.90 $pcm$ contributing a total of 55.5 $pcm$, while there are 51 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of $-1.22$ $pcm$ contributing a total of $-62.2$ $pcm$, respectively.
-The average $\Delta \nu_{d,i}$ when using the 123 \glspl{DNP} present in both datasets is $-0.62$ $pcm$, which comes from many small contributions as well as the seven \glspl{DNP} with a $\Delta \nu_{d,i}$ less than $-10$ $pcm$, though this is slightly offset by the three \glspl{DNP} with a $\Delta \nu_{d,i}$ greater than 10 $pcm$.
+This histogram shows in the two largest bins of 0 to 10 pcm and $-10$ to 0 pcm there are 62 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of 0.90 pcm contributing a total of 55.5 pcm, while there are 51 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of $-1.22$ pcm contributing a total of $-62.2$ pcm, respectively.
+The average $\Delta \nu_{d,i}$ when using the 123 \glspl{DNP} present in both datasets is $-0.62$ pcm, which comes from many small contributions as well as the seven \glspl{DNP} with a $\Delta \nu_{d,i}$ less than $-10$ pcm, though this is slightly offset by the three \glspl{DNP} with a $\Delta \nu_{d,i}$ greater than 10 pcm.
 Figure \ref{fig:hybrid-hist-jeff-jendl}(b) shows the histogram for the 280 unique nuclides between both datasets.
-This histogram shows in the two largest bins of 0 to 10 $pcm$ and $-10$ to 0 $pcm$ there are 85 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of 0.66 $pcm$ contributing a total of 55.9 $pcm$, while there are 184 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of $-0.49$ $pcm$ contributing a total of $-90.7$ $pcm$, respectively.
-The average $\Delta \nu_{d,i}$ when using the 280 \glspl{DNP} present in either dataset is $-0.43$ $pcm$, which comes from many small contributions as well as the seven \glspl{DNP} with a $\Delta \nu_{d,i}$ less than $-10$ $pcm$, though this is slightly offset by the three \glspl{DNP} with a $\Delta \nu_{d,i}$ greater than 10 $pcm$.
+This histogram shows in the two largest bins of 0 to 10 pcm and $-10$ to 0 pcm there are 85 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of 0.66 pcm contributing a total of 55.9 pcm, while there are 184 \glspl{DNP} with an average $\Delta \nu_{d,i}$ of $-0.49$ pcm contributing a total of $-90.7$ pcm, respectively.
+The average $\Delta \nu_{d,i}$ when using the 280 \glspl{DNP} present in either dataset is $-0.43$ pcm, which comes from many small contributions as well as the seven \glspl{DNP} with a $\Delta \nu_{d,i}$ less than $-10$ pcm, though this is slightly offset by the three \glspl{DNP} with a $\Delta \nu_{d,i}$ greater than 10 pcm.
 The average is smaller in magnitude compared to using only the common \glspl{DNP} because there are many additional smaller contributions present when account for the many less impactful \glspl{DNP} present in JENDL-5 that are not present in JEFF-3.1.1.
 
 
@@ -141,10 +141,10 @@ The average is smaller in magnitude compared to using only the common \glspl{DNP
   \includegraphics[width=0.45\linewidth]{images/hybrid/yield_diff_hist_present_both.png}
 }
 \hspace{0.05\linewidth}
-\subfloat[The JEFF-3.1.1 \gls{DNP} $\nu_{d_i}$ minus the JENDL-5 \gls{DNP} $\nu_{d,i}$ for every \gls{DNP} present in either dataset.]{
+\subfloat[The JEFF-3.1.1 \gls{DNP} $\nu_{d_i}$ minus the JENDL-5 \gls{DNP} $\nu_{d,i}$ for every \gls{DNP} present in either dataset, where $\nu_{d,i}$ is set to zero if it is not present in the dataset.]{
   \includegraphics[width=0.45\linewidth]{images/hybrid/yield_diff_hist_all.png}
 }
-\caption{These histograms show the difference in the individual \gls{DNP} yield contribution $\Delta \nu_{d,i}$ between the JEFF-3.1.1 dataset and the JENDL-5 dataset using bin widths of 10 $pcm$. Using all \gls{DNP} present in either dataset results in an average delayed neutron yield contribution difference $\Delta \nu_{d,i}$ of -0.43 $pcm$, while using only \gls{DNP} present in both datasets results in an average delayed neutron yield contribution difference $\Delta \nu_{d,i}$ of -0.62 $pcm$.}
+\caption{These histograms show the difference in the individual \gls{DNP} yield contribution $\Delta \nu_{d,i}$ between the JEFF-3.1.1 dataset and the JENDL-5 dataset using bin widths of 10 pcm. Using all \gls{DNP} present in either dataset results in an average delayed neutron yield contribution difference $\Delta \nu_{d,i}$ of -0.43 pcm, while using only \gls{DNP} present in both datasets results in an average delayed neutron yield contribution difference $\Delta \nu_{d,i}$ of -0.62 pcm.}
 \label{fig:hybrid-hist-jeff-jendl}
 \end{figure}
 

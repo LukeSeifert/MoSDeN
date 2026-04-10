@@ -61,7 +61,7 @@ The same \glspl{DNP} are in Table \ref{tab:iaea-jendl5-PCCi}, though the exact v
 Table \ref{tab:jendl5-Ui} shows the ten largest $U_i$ terms, which corresponds to which \glspl{DNP} have the largest uncertainties relative to their impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
 Four out of ten of these \glspl{DNP} are also in Table \ref{tab:iaea-jendl5-Ui}, though there are differences due to the emission probability and half-life differences.
 One notable difference is $^{102}$Sr, which has a $U_i$ value of $3.63 \times 10^{13}$.
-This value is significantly larger than any other value from any other dataset because it has an emission probability of $(6.245 \times 10^{-17}) \pm 0.02$.
+This value is significantly larger than any other value from any other dataset\footnote{ENDF/B-VII.1, ENDF/B-VIII.0, IAEA beta-delayed neutron emission, and JEFF-3.1.1 datasets assign $^{102}$Sr an emission probability of $0.055$.} because it has an emission probability of $(6.245 \times 10^{-17}) \pm 0.02$.
 This means that the relative uncertainty in Equation \eqref{eq:Uiv} works out to be $3.2 \times 10^{14}$, which is exceedingly large.
 To continue conducting the analysis, the contribution of $^{102}$Sr is ignored, treating the emission probability as 0 for this analysis.
 
@@ -72,7 +72,7 @@ To continue conducting the analysis, the contribution of $^{102}$Sr is ignored, 
         \hline
        Nuclide & $U_{i}$ \\
        \hline
-       $^{102}$Sr & -\\
+       $^{102}$Sr & $3.63 \times 10^{13}$\\
        $^{142}$Sb & 0.283440 \\
        $^{99}$Kr & 0.279344 \\
        $^{105}$Zr & 0.270256 \\
