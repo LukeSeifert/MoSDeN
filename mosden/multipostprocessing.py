@@ -6,7 +6,7 @@ import numpy as np
 from mosden.countrate import CountRate
 from mosden.utils.csv_handler import CSVHandler
 import os
-
+from uncertainties import ufloat
 
 class MultiPostProcess():
     def __init__(self, input_paths: list[str]) -> None:
@@ -371,18 +371,29 @@ class MultiPostProcess():
         for pi, post in enumerate(self.posts):
             times = post.decay_times
             spectra_data = CSVHandler(post.spectra_count_path, create=False).read_vector_csv()
+            count_data = CSVHandler(post.countrate_path, create=False).read_vector_csv()
             average_energies = list()
+            sigma_average_energies = list()
 
             for ti, t in enumerate(times):
                 use_actual_spectra = np.asarray([spectra_data[str(e)][ti] for e in post.eV_midpoints])
                 avg_MeV = post.calculate_avg_MeV(post.energy_groups_MeV,
                                                  use_actual_spectra)
-                average_energies.append(avg_MeV)
+                midpoints_MeV = np.asarray(post.eV_midpoints) / 1e6
+                sigma_average_energies = np.sum(midpoints_MeV * use_actual_spectra * count_data['sigma counts'][ti] / count_data['counts'][ti]**2)
+                average_energies.append(ufloat(avg_MeV, sigma_average_energies))
+
             if pi == 0:
                 base_avg = average_energies
-            plt.plot(times, average_energies, label=post.name,
+            nom_energies = np.asarray([e.n for e in average_energies])
+            std_energies = np.asarray([e.s for e in average_energies])
+            plt.plot(times, nom_energies, label=post.name,
                      color=colors[pi],
-                     linestyle=post.linestyles[pi%len(post.linestyles)])
+                     linestyle=post.linestyles[pi+1%len(post.linestyles)])
+            plt.fill_between(times, nom_energies-std_energies,
+                             nom_energies+std_energies,
+                             color=colors[pi],
+                             alpha=0.25)
         plt.legend()
         plt.xlabel(r'Time $[s]$')
         plt.ylabel(r'$\bar{E}$ $[MeV]$')
@@ -396,15 +407,21 @@ class MultiPostProcess():
                 continue
             times = post.decay_times
             spectra_data = CSVHandler(post.spectra_count_path, create=False).read_vector_csv()
+            count_data = CSVHandler(post.countrate_path, create=False).read_vector_csv()
             average_energies = list()
 
             for ti, t in enumerate(times):
                 use_actual_spectra = np.asarray([spectra_data[str(e)][ti] for e in post.eV_midpoints])
                 avg_MeV = post.calculate_avg_MeV(post.energy_groups_MeV,
                                                  use_actual_spectra)
-                average_energies.append(avg_MeV)
+                sigma_average_energies = count_data['sigma counts'][ti]/sum(use_actual_spectra)
+                average_energies.append(ufloat(avg_MeV, sigma_average_energies))
             diff = (np.asarray(base_avg) - np.asarray(average_energies)) * 1000
-            plt.plot(times, diff, color='black')
+            nom_diff = np.asarray([d.n for d in diff])
+            std_diff = np.asarray([d.s for d in diff])
+            plt.plot(times, nom_diff, color='black')
+            plt.fill_between(times, nom_diff-std_diff, nom_diff+std_diff,
+                             color='black', alpha=0.5)
         plt.xlabel(r'Time $[s]$')
         plt.ylabel(r'$\Delta \bar{E}$ $[keV]$')
         plt.tight_layout()

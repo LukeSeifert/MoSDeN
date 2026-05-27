@@ -256,7 +256,7 @@ class PostProcess(BaseClass):
             The maximum value of the colorbar
         """
         configure(permissive=True)
-        plt.figure(figsize=(6.4*1.10, 4.8))
+        plt.figure(figsize=(6.4*1.25, 4.8))
         N = list()
         Z = list()
         C = list()
@@ -279,7 +279,7 @@ class PostProcess(BaseClass):
             vmin_use = 0.1 * vmin_use
             vmax_use = 10 * vmax_use
         norm = LogNorm(vmin=vmin_use, vmax=vmax_use)
-        plt.scatter(N, Z, c=C, norm=norm, marker="s", s=10)
+        plt.scatter(N, Z, c=C, norm=norm, marker="s", s=20)
         plt.set_cmap('viridis')
         cbar = plt.colorbar()
         cbar.set_label(cbar_label)
@@ -998,6 +998,9 @@ class PostProcess(BaseClass):
     
     def _compare_spectral_counts(self) -> None:
         spectra_data = CSVHandler(self.spectra_count_path, create=False).read_vector_csv()
+        count_data = CSVHandler(self.countrate_path, create=False).read_vector_csv()
+        count_errs = count_data['sigma counts']
+        counts = count_data['counts']
 
         times, group_counts = self._load_group_spectral_counts()
         
@@ -1010,7 +1013,9 @@ class PostProcess(BaseClass):
             use_actual_spectra = np.asarray([spectra_data[str(e)][ti] for e in self.eV_midpoints])
             avg_MeV = self.calculate_avg_MeV(self.energy_groups_MeV,
                                              use_actual_spectra/sum(use_actual_spectra))
-            average_energies.append(avg_MeV)
+            midpoints_MeV = np.asarray(self.eV_midpoints) / 1e6
+            sigma_average_energies = np.sum(midpoints_MeV * use_actual_spectra * count_errs[ti] / counts[ti]**2)
+            average_energies.append(ufloat(avg_MeV, sigma_average_energies))
             use_actual_spectra = use_actual_spectra / bin_widths
             use_actual_spectra = np.concatenate((use_actual_spectra, [use_actual_spectra[-1]]))
             use_group_spectra  = np.asarray([group_counts[str(e)][ti] for e in self.eV_midpoints])
@@ -1038,7 +1043,13 @@ class PostProcess(BaseClass):
             plt.savefig(f'{self.spectra_img_dir}/diff_spectra_counts_{t:.5f}.png')
             plt.close()
         
-        plt.plot(times, average_energies, color='black')
+        nom_energies = np.asarray([e.n for e in average_energies])
+        std_energies = np.asarray([e.s for e in average_energies])
+        plt.plot(times, nom_energies, color='black')
+        plt.fill_between(times, nom_energies-std_energies,
+                         nom_energies+std_energies,
+                         color='black',
+                         alpha=0.5)
         plt.xlabel(r'Time $[s]$')
         plt.ylabel(r'$\bar{E}$ $[MeV]$')
         plt.tight_layout()
