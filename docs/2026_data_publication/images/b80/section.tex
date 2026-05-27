@@ -11,7 +11,7 @@ Although Figures \ref{fig:b80-dnp-yield} and \ref{fig:b71-dnp-yield} are similar
 
 
 Table \ref{tab:b80-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
-The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
+The differences between both are well within the uncertainty bounds, indicating the six groups sufficiently capture the general behavior of the delayed neutrons.
 However, the average half-life differs by approximately 0.3 seconds from Section \ref{sec:b71}, while the total delayed neutron yield differs by approximately 100 $pcm$.
 These differences put both results within uncertainty bounds of each other, though the ENDF/B-VIII.0 total delayed neutron yield and average half-life have even larger differences from the values calculated using the IAEA beta-delayed neutron emission database and JENDL-5 than the ENDF/B-VII.1 data.
 
@@ -88,7 +88,7 @@ This can be seen by comparing the $^{131}$Cd ENDF/B-VIII.0 $PCC_i$ of 1.989 to t
     \label{tab:b80-Ui}
 \end{table}
 
-Figure \ref{fig:b80-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+Figure \ref{fig:b80-bar-uiv} gives a more detailed view of which \gls{DNP} values specifically lead to the large $U_i$ values.
 This offers slightly more insight than Table \ref{tab:b80-Ui}, which sums over the various \gls{DNP} values.
 The top four $U_{i,v}$ values are identical as those in Figure \ref{fig:b71-bar-uiv}, indicating nuclear data for $^{100}$Rb and $^{137}$Sb remain problematic in ENDF/B-VIII.0 when calculating \gls{DNP} group parameters.
 
@@ -109,11 +109,11 @@ The same points of interest as in Figure \ref{fig:pcc-charts-b71} are still rele
 \begin{figure}[!ht]
 \centering
 \subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/b80/chart_PCC.png}
+  \includegraphics[width=0.65\linewidth]{images/b80/chart_PCC.png}
 }
-\hspace{0.05\linewidth}
+\\
 \subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/b80/chart_PCC_uncertainty.png}
+  \includegraphics[width=0.65\linewidth]{images/b80/chart_PCC_uncertainty.png}
 }
 \caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using ENDF/B-VIII.0 nuclear data.}
 \label{fig:pcc-charts-b80}

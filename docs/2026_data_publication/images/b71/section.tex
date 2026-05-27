@@ -1,6 +1,6 @@
 Figure \ref{fig:b71-dnp-yield} shows the percentage of the total delayed neutron yield that comes from the six \glspl{DNP} with the largest yield contribution, where the yield from each \gls{DNP} is defined by Equation \eqref{eq:summation-tdny}.
 These yields can be compared to those in Figure \ref{fig:iaea-jendl-dnp-yield}, which shows that in ENDF/B-VII.1, the yields of the top \glspl{DNP} are relatively smaller.
-There is also the presence of $^{85}$As, which did not appear in the top six \glspl{DNP} when using the IAEA beta-delayed neutron emission database and JENDL-5 nuclear data.
+There is also the presence of $^{85}$As, which did not appear in the top six \glspl{DNP} when using the IAEA $\beta$-delayed neutron emission database with JENDL-5 cumulative fission yields.
 
 \begin{figure}
     \centering
@@ -12,7 +12,8 @@ There is also the presence of $^{85}$As, which did not appear in the top six \gl
 
 Table \ref{tab:b71-yld-hl} shows how the total delayed neutron yield $\nu_d$ and average half-life $\bar{\tau}$ compares between the value from the $I$ \glspl{DNP} and the six \gls{DNP} groups.
 The differences between both are well within the uncertainty bounds, indicating the six groups are sufficiently capturing the general behavior of the delayed neutrons.
-However, the average half-life differs by approximately two seconds from Section \ref{sec:iaea-jendl5}, while the total delayed neutron yield differs by approximately 300 $pcm$.
+However, the average half-life differs by approximately two seconds from Section \ref{sec:iaea-jendl5}, while the total delayed neutron yield differs by approximately 300 pcm.
+These differences are significant in the context of reactor transients which evolve over fractions of seconds and hundreds of pcm.
 
 
 \begin{table}[]
@@ -35,7 +36,7 @@ However, the average half-life differs by approximately two seconds from Section
 \end{table}
 
 Table \ref{tab:b71-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
-These results show that several \glspl{DNP} have a stronger correlation than $^{87}$Br, which is surprising considering its long half-life causes group one \gls{DNP} group parameters to be more sensitive to it.
+These results show that several \glspl{DNP} have a stronger correlation than $^{87}$Br, which is surprising considering its long half-life causes group one \gls{DNP} group parameters to be very sensitive to it.
 However, differences in the emission probabilities, half-lives, and cumulative fission yields can cause \glspl{DNP} such as $^{137}$I to contribute more to \gls{DNP} group two.
 For instance, Section \ref{sec:iaea-jendl5} shows that the \gls{PCC} for the group two half-life $\tau_2$ from changes in the $^{137}$I half-life is 0.726; but that same value calculated using the ENDF/B-VII.1 nuclear data is 0.922.
 
@@ -88,7 +89,7 @@ This means that, for ENDF/B-VII.1, these \glspl{DNP} will lead to greater uncert
     \label{tab:b71-Ui}
 \end{table}
 
-Figure \ref{fig:b71-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+Figure \ref{fig:b71-bar-uiv} gives a more detailed view of which \gls{DNP} values specifically lead to the large $U_i$ values.
 This offers slightly more insight than Table \ref{tab:b71-Ui}, which sums over the various \gls{DNP} values.
 These results indicate that the half-lives are the primary sources of uncertainty that most affect the \gls{DNP} group parameters.
 The top two \gls{DNP} in Table \ref{tab:b71-Ui} appear twice in this figure, as they have contributions from both the half-life nuclear data and their concentration.
@@ -111,11 +112,11 @@ There are two points of interest that have large $PCC_i$ and $U_i$ values, $^{10
 \begin{figure}[!ht]
 \centering
 \subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/b71/chart_PCC.png}
+  \includegraphics[width=0.65\linewidth]{images/b71/chart_PCC.png}
 }
-\hspace{0.05\linewidth}
+\\
 \subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/b71/chart_PCC_uncertainty.png}
+  \includegraphics[width=0.65\linewidth]{images/b71/chart_PCC_uncertainty.png}
 }
 \caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using ENDF/B-VII.1 nuclear data.}
 \label{fig:pcc-charts-b71}

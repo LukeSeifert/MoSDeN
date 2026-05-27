@@ -7,7 +7,7 @@ There are a total of 220 \glspl{DNP} in this dataset, and five of them capture o
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{images/iaea/dnp_yield.png}
-    \caption{The fraction of the delayed neutron yield from particular \glspl{DNP} from JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities. The five \glspl{DNP} with the largest delayed neutron yield contributions supply over 50\% of the total delayed neutrons per fission event. The remaining 215 \glspl{DNP} provide approximately 48\% of the total delayed neutron yield.}
+    \caption{The fraction of the delayed neutron yield from particular \glspl{DNP} from JENDL-5 cumulative fission yields and IAEA $\beta$-delayed neutron emission database half-lives and emission probabilities. The five \glspl{DNP} with the largest delayed neutron yield contributions supply over 50\% of the total delayed neutrons per fission event. The remaining 215 \glspl{DNP} provide approximately 48\% of the total delayed neutron yield.}
     \label{fig:iaea-jendl-dnp-yield}
 \end{figure}
 
@@ -19,8 +19,8 @@ Although not shown, the other group parameters follow this same trend.
 Figure \ref{fig:count-rate-iaea-jendl}(b) shows the Keepin normalized delayed neutron count rate from the Keepin et al. six \gls{DNP} group parameter fit \cite{keepin1957delayed}.
 The figure compares the delayed neutron count rate calculated in this work both for every count rate from the sampled data and from the group fit using the calculated \gls{DNP} group parameters.
 A value of 1 at any given time indicates the delayed neutron count rate at that time perfectly matches the delayed neutron count rate from the Keepin et al. \gls{DNP} group parameters.
-This is why the Keepin 6-group Fit data is unity at all times, as it is always self-equivalent.
-These results show that the Keepin et al. \gls{DNP} group parameters agree well with group parameters calculated using the \gls{IAEA} beta-delayed neutron emission database and JENDL-5 cumulative fission yields, with differences smaller than those from Brady and England and from Synetos and Williams.
+This is why the Keepin 6-group data is unity at all times, as it is always self-equivalent.
+These results show that the Keepin et al. \gls{DNP} group parameters agree well with group parameters calculated using the \gls{IAEA} $\beta$-delayed neutron emission database and JENDL-5 cumulative fission yields, with differences smaller than those from Brady and England \cite{brady1989delayed} and from Synetos and Williams \cite{synetos1983delayed}.
 
 \begin{figure}[!ht]
 \centering
@@ -33,12 +33,12 @@ These results show that the Keepin et al. \gls{DNP} group parameters agree well 
 }
 \caption{
 %These plots show how the 5000 samples lead to a distribution of \gls{DNP} group parameters and delayed neutron count rates from . 
-These plots show the distribution of the 5000 randomly sampled results using JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities.
+These plots show the distribution of the 5000 randomly sampled results using JENDL-5 cumulative fission yields and IAEA $\beta$-delayed neutron emission database half-lives and emission probabilities.
 The \gls{DNP} group one half-life $\tau_1$ shows a normal distribution about a mean, while the Keepin et al. normalized count rate shows this work offers good agreement with the literature.}
 \label{fig:count-rate-iaea-jendl}
 \end{figure}
 
-Figure \ref{fig:sens-iaea-jendl} shows two examples for how the \glspl{PCC} are calculated using the 5000 samples.
+Figure \ref{fig:sens-iaea-jendl} shows two examples of how the \glspl{PCC} are calculated using the 5000 samples.
 Each sample is represented as a single point at which the nuclear data is sampled from a normal distribution.
 Specifically for this figure, the samples are plotted as a function of the $^{137}$I half-life.
 Figure \ref{fig:sens-iaea-jendl}(a) shows how the group one \gls{DNP} half-life $\tau_1$ changes as a function of the $^{137}$I half-life.
@@ -67,7 +67,7 @@ The differences between both are well within the uncertainty bounds, indicating 
 
 \begin{table}[]
     \centering
-    \caption{IAEA beta-delayed neutron emission database and JENDL-5 nuclear data delayed neutron yield and average half-life values.}
+    \caption{IAEA $\beta$-delayed neutron emission database and JENDL-5 nuclear data delayed neutron yield and average half-life values.}
     \begin{tabular}{lll}
         \hline
         Parameter & Value & Units\\
@@ -84,13 +84,13 @@ The differences between both are well within the uncertainty bounds, indicating 
     \label{tab:iaea-jendl5-yld-hl}
 \end{table}
 
-Table \ref{tab:iaea-jendl5-PCCi} shows the ten largest $PCC_i$ terms, which reveals which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
+Table \ref{tab:iaea-jendl5-PCCi} shows the ten largest $PCC_i$ terms, demonstrating which \glspl{DNP} have the greatest impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
 This table shows that bromine alone has five isotopes that strongly affect the \gls{DNP} group parameters, with $^{87}$Br being the dominant isotope due to its long-half life that makes it the primary \gls{DNP} for the group one parameters.
 Generally, \glspl{DNP} will have a large $PCC_i$ for one of two reasons: they affect several parameters moderately, such as $^{96}$Rb which has an impact on group six as well as a smaller impact on groups five, four, three, and two as well; or they have a half-life that causes them to have a large impact on one specific group, such as $^{87}$Br, which primarily affects group one.
 
 \begin{table}[]
     \centering
-    \caption{IAEA beta-delayed neutron emission database and JENDL-5 nuclear data ten largest \glspl{PCC}.}
+    \caption{IAEA $\beta$-delayed neutron emission database and JENDL-5 nuclear data ten largest \glspl{PCC}.}
     \begin{tabular}{ll}
         \hline
        Nuclide & $PCC_{i}$ \\
@@ -111,12 +111,12 @@ Generally, \glspl{DNP} will have a large $PCC_i$ for one of two reasons: they af
 \end{table}
 
 Table \ref{tab:iaea-jendl5-Ui} shows the ten largest $U_i$ terms, which corresponds to which \glspl{DNP} have the largest uncertainties relative to their impact on the \gls{DNP} group parameters $\nu_{d,k}$ and $\tau_k$.
-These ten \glspl{DNP} do not overlap at all with Table \ref{tab:iaea-jendl5-PCCi}, indicating that the JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database have small relative uncertainties for the \glspl{DNP} in Table \ref{tab:iaea-jendl5-PCCi} as otherwise those \glspl{DNP} would dominate Table \ref{tab:iaea-jendl5-Ui}.
-Interestingly, it appears that cobalt has several isotopes that have large $U_i$ values, indicating that cobalt has large relative uncertainties in its nuclear data relative to its impact on the \gls{DNP} group parameters.
+These ten \glspl{DNP} do not overlap at all with Table \ref{tab:iaea-jendl5-PCCi}, indicating that the JENDL-5 cumulative fission yields and IAEA $\beta$-delayed neutron emission database have small relative uncertainties for the \glspl{DNP} in Table \ref{tab:iaea-jendl5-PCCi} as otherwise those \glspl{DNP} would dominate Table \ref{tab:iaea-jendl5-Ui}.
+Interestingly, it appears that cobalt has several isotopes that have large $U_i$ values, indicating that cobalt in this nuclear dataset has relative uncertainties that lead to larger differences in the \gls{DNP} group parameters than other \glspl{DNP}.
 
 \begin{table}[]
     \centering
-    \caption{IAEA beta-delayed neutron emission database and JENDL-5 nuclear data ten largest uncertainty-weighted \glspl{PCC}.}
+    \caption{IAEA $\beta$-delayed neutron emission database and JENDL-5 nuclear data ten largest uncertainty-weighted \glspl{PCC}.}
     \begin{tabular}{ll}
         \hline
        Nuclide & $U_{i}$ \\
@@ -136,35 +136,36 @@ Interestingly, it appears that cobalt has several isotopes that have large $U_i$
     \label{tab:iaea-jendl5-Ui}
 \end{table}
 
-Figure \ref{fig:iaea-jendl-bar-uiv} gives a more detailed view on which \gls{DNP} values specifically lead to the large $U_i$ values.
+Figure \ref{fig:iaea-jendl-bar-uiv} gives a more detailed view of which \gls{DNP} values specifically lead to the large $U_i$ values.
 This offers slightly more insight than Table \ref{tab:iaea-jendl5-Ui}, which sums over the various \gls{DNP} values.
 This figure shows that the half-lives $\tau$ and emission probabilities $P_n$ are the primary drivers of $U_{i}$, at least for the ten most impactful \glspl{DNP}.
-This indicates that the JENDL-5 cumulative fission yields offer small relative uncertainties compared to the relative uncertainties from the IAEA beta-delayed neutron emission database for \glspl{DNP} that have more significant effects on the \gls{DNP} group parameters.
+This indicates that the JENDL-5 cumulative fission yields offer small relative uncertainties compared to the relative uncertainties from the IAEA $\beta$-delayed neutron emission database for \glspl{DNP} that have more significant effects on the \gls{DNP} group parameters.
 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\linewidth]{images/iaea/pcc-bar.png}
-    \caption{The ten largest uncertainty-weighted \glspl{PCC} $U_{i,v}$ sorted by \gls{DNP} and associated \gls{DNP} value from JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database half-lives and emission probabilities.}
+    \caption{The ten largest uncertainty-weighted \glspl{PCC} $U_{i,v}$ sorted by \gls{DNP} and associated \gls{DNP} value from JENDL-5 cumulative fission yields and IAEA $\beta$-delayed neutron emission database half-lives and emission probabilities.}
     \label{fig:iaea-jendl-bar-uiv}
 \end{figure}
 
 
 Figure \ref{fig:pcc-charts-iaea-jendl} shows the $PCC_i$ and $U_i$ plotted on the chart of the nuclides.
-These plots do not limit to only the top ten largest values, but instead show how all of the values compare among each other.
+These plots are not limited to only the top ten largest values, but instead show how all of the values compare with each other.
 The values of $U_i$ are all smaller than those of $PCC_i$, because all of the relative uncertainties are less than 1.
 There do not appear to be any clear trends, though in Figure \ref{fig:pcc-charts-iaea-jendl}(a), some horizontal bands of larger $PCC_i$ values can be seen for 35 protons, 37 protons, and 53 protons; these correspond to bromine, rubidium, and iodine, respectively.
 
 \begin{figure}[!ht]
 \centering
 \subfloat[The $PCC_i$, or total \gls{PCC}, calculated for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/iaea/chart_PCC.png}
+  \includegraphics[width=0.65\linewidth]{images/iaea/chart_PCC.png}
 }
-\hspace{0.05\linewidth}
+%\hspace{0.05\linewidth}
+\\
 \subfloat[The $U_i$, or total uncertainty-weighted \gls{PCC}, for each \gls{DNP}.]{
-  \includegraphics[width=0.45\linewidth]{images/iaea/chart_PCC_uncertainty.png}
+  \includegraphics[width=0.65\linewidth]{images/iaea/chart_PCC_uncertainty.png}
 }
-\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using JENDL-5 cumulative fission yields and IAEA beta-delayed neutron emission database emission probabilities and half-lives.}
+\caption{Chart of nuclide plots showing the \glspl{PCC} and uncertainty-weighted \glspl{PCC} using JENDL-5 cumulative fission yields and IAEA $\beta$-delayed neutron emission database emission probabilities and half-lives.}
 \label{fig:pcc-charts-iaea-jendl}
 \end{figure}
 

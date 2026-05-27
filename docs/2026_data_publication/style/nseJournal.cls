@@ -22,7 +22,7 @@
 \RequirePackage[labelformat=simple]{subcaption}                                 %enables subfigure captions 
     \captionsetup[table]{labelsep=newline,name=TABLE}                           %sets table caption formatting options to meet NSE requirements
     \captionsetup[figure]{name=Fig.,labelsep=period}                            %sets figure caption options to meet NSE requirements
-\RequirePackage[colorlinks=true, allcolors=blue, pdfencoding=auto]{hyperref}    %reference and citation hyperlinking linking
+\RequirePackage[colorlinks=false, allcolors=blue, pdfencoding=auto]{hyperref}    %reference and citation hyperlinking linking
 \RequirePackage[]{footmisc}                                                     %enables double spaced footnotes
     \renewcommand{\footnotelayout}{\doublespacing}                              %double spacing of footnotes
 \RequirePackage{xstring}
