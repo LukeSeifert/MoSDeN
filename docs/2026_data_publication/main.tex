@@ -47,12 +47,12 @@
 \renewcommand{\arraystretch}{1.2}
 
 \begin{abstract}
-This paper presents an analysis of the uncertainty-weighted sensitivity of \gls{DNP} group parameters, half-lives $\tau_k$ and yields $\nu_{d,k}$ with their nuclear data.
-This analysis is conducted using thermal fission of $^{235}$U for various datasets: the \gls{IAEA} beta-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, JEFF-3.1.1, and JENDL-5.
+This paper presents an analysis of the uncertainty-weighted sensitivities of \gls{DNP} group parameters, consisting of half-lives $\tau_k$ and yields $\nu_{d,k}$, with their nuclear data.
+This analysis is conducted using thermal fission of $^{235}$U for various datasets: the \gls{IAEA} $\beta$-delayed neutron emission database, ENDF/B-VII.1, ENDF/B-VIII.0, JEFF-3.1.1, and JENDL-5.
 These uncertainty-weighted sensitivities provide a detailed view of which \glspl{DNP} need more accurate data, particularly for microscopic group parameter formulation and summation calculations.
 Improving the accuracy of these data is of particular importance for kinetics simulations and microscopic calculations.
 The microscopic approach for group parameter calculation provides insight into how each \gls{DNP} contributes to delayed neutron emission, but it requires accurate nuclear data. 
-The analyses identified individual \glspl{DNP} with a large impact on the \gls{DNP} group parameters and large uncertainties in their nuclear data.
+The analyses conducted in this work identified individual \glspl{DNP} with a large impact on the \gls{DNP} group parameters and large uncertainties in their nuclear data.
 %The analyses conducted in this work reveal several \glspl{DNP} that correlate strongly with the \gls{DNP} group parameters, indicating a need for more accurate data for those \glspl{DNP}.
 There are also \glspl{DNP} which have large uncertainties and vary significantly between datasets which also warrant additional attention.
 This work revealed large discrepancies in ENDF datasets for $^{85}$As, $^{86}$As, $^{100}$Rb, and $^{137}$Sb; under-prediction of the delayed neutron yield $\nu_d$ in JEFF-3.1.1 due to many small discrepancies in various \glspl{DNP}; and good agreement with experimental and calculated delayed neutron yields when using the JENDL-5 dataset.
@@ -68,7 +68,7 @@ These effects are well understood and have been simplified using various approxi
 The hundreds of precursor nuclides that decay and emit delayed neutrons are approximated using six to eight sources, or \gls{DNP} groups \cite{brady1988evaluation}.
 
 There are several methods for calculating these \gls{DNP} groups.
-This work focuses on the microscopic approach \cite{d2002review, rudstam2002delayed, wilson2002delayed, brady1989delayed, mills2014calculation, huynh2014calculation, foligno_new_2019, piksaikin_new_2019}.
+This work focuses on the microscopic approach \cite{d2002review, rudstam2002delayed, wilson2002delayed, brady1989delayed, mills2014calculation, huynh2014calculation, foligno_new_2019, piksaikin_new_2019, seifert2025delayed}.
 This approach uses experimental data for individual \glspl{DNP} combined together computationally.
 One strength of this approach is that it provides insight into how each individual \gls{DNP} contributes to the \gls{DNP} group parameters.
 However, this strength is also a weakness, as it relies on the nuclear data for every \gls{DNP} individually, which means a few large uncertainties in the various \glspl{DNP} can lead to uncertain results for the \gls{DNP} group parameters.
@@ -94,7 +94,7 @@ This work used two different sets of data: the nuclear data for each individual 
 The set of $I$ individual \glspl{DNP} have the following data:
 \begin{align}
     I &= \text{the total number of \glspl{DNP} considered [-]} \nonumber \\
-    \gamma_i &= \text{the cumulative fission yield of \gls{DNP} $i$ [-]} \nonumber \\
+    CFY_i &= \text{the cumulative fission yield of \gls{DNP} $i$ [-]} \nonumber \\
     P_{n,i} &= \text{the emission probability of \gls{DNP} $i$ [-]} \nonumber \\
     \tau_i &= \text{the half-life of \gls{DNP} $i$ $[s]$} \nonumber \\
     \chi_{d,i} &= \text{the delayed neutron energy spectrum from \gls{DNP} $i$ [-].} \nonumber
