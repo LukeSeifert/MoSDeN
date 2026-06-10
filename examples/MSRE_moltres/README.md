@@ -1,6 +1,7 @@
 # Moltres MSRE-like example
 
-To run with Moltres, first edit the necessary data.
+To run with Moltres, first `conda activate moose` and then
+ edit the necessary data for the simulation.
 
 The data that will need to be changed is `msre_gentry_4g_fuel_rod0_BETA_EFF` and
 `msre_gentry_4g_fuel_rod0_LAMBDA`.
