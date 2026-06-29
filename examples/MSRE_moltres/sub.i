@@ -3,7 +3,8 @@ ini_temp = 922
 
 [GlobalParams]
   num_groups = 4
-  num_precursor_groups = 12
+  num_precursor_groups = 6
+  #num_precursor_groups = 12
   group_fluxes = '0 0 0 0'
   temperature = temp
   sss2_input = true
@@ -51,28 +52,6 @@ ini_temp = 922
     type = MatINSTemperatureTimeDerivative
     variable = temp
   [../]
-  # [./temp_source_fuel]
-  #   type = TransientFissionHeatSource
-  #   variable = temp
-  #   nt_scale=${nt_scale}
-  # [../]
-  # [./temp_source_mod]
-  #   type = GammaHeatSource
-  #   variable = temp
-  #   gamma = .0144 # Cammi .0144
-  #   block = 'moder'
-  #   average_fission_heat = 'average_fission_heat'
-  # [../]
-  # [./temp_diffusion]
-  #   type = MatDiffusion
-  #   diffusivity = 'k'
-  #   variable = temp
-  # [../]
-  # [./temp_advection_fuel]
-  #   type = ConservativeTemperatureAdvection
-  #   velocity = '${flow_velocity} 0 0'
-  #   variable = temp
-  # [../]
 []
 
 [DGKernels]
@@ -93,12 +72,6 @@ ini_temp = 922
     variable = temp
     uu = ${flow_velocity}
   [../]
-  # [./diri]
-  #   boundary = 'left'
-  #   type = DirichletBC
-  #   variable = temp
-  #   value = 930
-  # [../]
   [./temp_advection_outlet]
     boundary = 'right'
     type = TemperatureOutflowBC
@@ -191,21 +164,3 @@ ini_temp = 922
 [Debug]
   show_var_residual_norms = true
 []
-
-# connect inlet and outlet to multiapp
-# [Transfers]
-#   [./to_core]
-#     type = MultiAppPostprocessorTransfer
-#     multi_app = MoltresApp
-#     from_postprocessor = loopEndTemp
-#     to_postprocessor = inlet_mean_temp
-#     direction = to_multiapp
-#   [../]
-#   [./from_core]
-#     type = MultiAppPostprocessorTransfer
-#     multi_app = MoltresApp
-#     from_postprocessor = coreEndTemp
-#     to_postprocessor = coreEndTemp
-#     direction = to_multiapp
-#   [../]
-# []

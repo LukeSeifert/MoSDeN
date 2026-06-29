@@ -8,13 +8,14 @@ H = 162.56
 
 [GlobalParams]
   num_groups = 4
-  num_precursor_groups = 12
+  num_precursor_groups = 6
+  #num_precursor_groups = 12
   use_exp_form = false
   group_fluxes = 'group1 group2 group3 group4'
   temperature = temp
   sss2_input = true
-  #pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
-  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6 pre7 pre8 pre9 pre10 pre11 pre12'
+  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
+  #pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6 pre7 pre8 pre9 pre10 pre11 pre12'
   account_delayed = true
   nt_scale = ${nt_scale}
 []
@@ -90,7 +91,7 @@ H = 162.56
   []
   [temp_advection_fuel]
     type = ConservativeTemperatureAdvection
-    velocity_variable = '0 ${flow_velocity} 0'
+    velocity_variable = '0 18.06 0'
     variable = temp
     block = 'fuel'
   []
@@ -104,17 +105,11 @@ H = 162.56
     offset = -27.8
     variable = temp
   []
-  # [./temp_diri_cg]
-  #   boundary = 'moder_bottoms fuel_bottoms outer_wall'
-  #   type = FunctionDirichletBC
-  #   function = 'temp_bc_func'
-  #   variable = temp
-  # [../]
   [temp_advection_outlet]
     boundary = 'fuel_tops'
     type = TemperatureOutflowBC
     variable = temp
-    velocity = '0 ${flow_velocity} 0'
+    velocity = '0 18.06 0'
   []
 []
 

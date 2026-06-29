@@ -8,13 +8,14 @@ H = 162.56
 
 [GlobalParams]
   num_groups = 4
-  num_precursor_groups = 12
+  num_precursor_groups = 6
+  #num_precursor_groups = 12
   use_exp_form = false
   group_fluxes = 'group1 group2 group3 group4'
   temperature = temp
   sss2_input = true
-  #pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
-  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6 pre7 pre8 pre9 pre10 pre11 pre12'
+  pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6'
+  #pre_concs = 'pre1 pre2 pre3 pre4 pre5 pre6 pre7 pre8 pre9 pre10 pre11 pre12'
   account_delayed = true
   nt_scale = ${nt_scale}
 []
@@ -55,36 +56,36 @@ H = 162.56
     variable = pre6
     value = 0
   []
-  [pre7_zero]
-    type = ConstantIC
-    variable = pre7
-    value = 0
-  []
-  [pre8_zero]
-    type = ConstantIC
-    variable = pre8
-    value = 0
-  []
-  [pre9_zero]
-    type = ConstantIC
-    variable = pre9
-    value = 0
-  []
-  [pre10_zero]
-    type = ConstantIC
-    variable = pre10
-    value = 0
-  []
-  [pre11_zero]
-    type = ConstantIC
-    variable = pre11
-    value = 0
-  []
-  [pre12_zero]
-    type = ConstantIC
-    variable = pre12
-    value = 0
-  []
+#  [pre7_zero]
+#    type = ConstantIC
+#    variable = pre7
+#    value = 0
+#  []
+#  [pre8_zero]
+#    type = ConstantIC
+#    variable = pre8
+#    value = 0
+#  []
+#  [pre9_zero]
+#    type = ConstantIC
+#    variable = pre9
+#    value = 0
+#  []
+#  [pre10_zero]
+#    type = ConstantIC
+#    variable = pre10
+#    value = 0
+#  []
+#  [pre11_zero]
+#    type = ConstantIC
+#    variable = pre11
+#    value = 0
+#  []
+#  [pre12_zero]
+#    type = ConstantIC
+#    variable = pre12
+#    value = 0
+#  []
 []
 
 [Mesh]
@@ -117,12 +118,10 @@ H = 162.56
     w_def = 0
     nt_exp_form = false
     loop_precursors = false
-    #multi_app = loopApp
     is_loopapp = false
     inlet_boundaries = 'fuel_bottoms'
     family = MONOMIAL
     order = CONSTANT
-    # jac_test = true
   []
 []
 
@@ -136,7 +135,6 @@ H = 162.56
 []
 
 [Kernels]
-  # Temperature
   [temp_time_derivative]
     type = MatINSTemperatureTimeDerivative
     variable = temp
@@ -174,12 +172,6 @@ H = 162.56
     offset = -27.8
     variable = temp
   []
-  # [./temp_diri_cg]
-  #   boundary = 'moder_bottoms fuel_bottoms outer_wall'
-  #   type = FunctionDirichletBC
-  #   function = 'temp_bc_func'
-  #   variable = temp
-  # [../]
   [temp_advection_outlet]
     boundary = 'fuel_tops'
     type = TemperatureOutflowBC
