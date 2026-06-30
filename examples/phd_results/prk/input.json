@@ -3,14 +3,17 @@
     "s_selections": ["saturation (12 Group)", "saturation (6 Group)"],
     "12_selections": ["saturation (12 Group)", "pulse (12 Group)"],
     "fast_selections": ["fast pulse (9 Group)", "fast pulse (6 Group)"],
-    "selections": ["pulse (8 Group)", "intermediate (8 Group)", "saturation (8 Group)"],
-    "_selections": ["saturation (6 Group)", "pulse (6 Group)"],
-    "o_selections": ["pulse", "intermediate", "intermediate [all]", "saturation", "saturation [all]"],
+    "selections": ["No Chem", "MSBR"],
+    "s_p_selections": ["saturation (6 Group)", "pulse (6 Group)"],
+    "all_selections": ["pulse", "intermediate", "intermediate [all]", "saturation", "saturation [all]"],
     "problem": "step_relative",
     "euler_mode": "backward",
     "time_steps": [1e-3],
     "tf": 50,
-    "step_relative_insertion": 0.25,
+    "step_insertion": 50e-5,
+    "step_relative_insertion": 0.1,
+    "step_duration": 10,
+    "step_start": 30,
     "rho_max_dollars": 0.5,
     "neutrons_per_fission": 2.4,
     "fast_gen_time": 2e-7,
@@ -23,6 +26,22 @@
     "keepin": {
       "yields": [0.00052, 0.00346, 0.00310, 0.00624, 0.00182, 0.00066],
       "hls": [55.89897, 22.72614, 6.24457, 2.30281, 0.60802, 0.23028]
+    },
+    "No Chem": {
+      "yields": [0.0005555108923,0.002896642828,0.001282418019,0.004619618799,0.004805975232,0.001816236317],
+      "hls": [55.58776152,24.0469711,13.61795573,4.253738626,1.707202273,0.3492422749]
+    },
+    "MSBR": {
+      "yields": [0.0005363740907,0.002986427543,0.001275487978,0.004658374314,0.004600280245,0.001842194009],
+      "hls": [55.55750312,23.86908541,12.40302328,4.073251663,1.698129876,0.3544558619]
+    },
+    "No Chem 12g": {
+      "yields": [0.0005528127199,0.0025168149,0.001343067909,4.76E-05,0.001983009666,0.001956345617,0.004044957617,0.001292357305,0.0008206158679,0.00106502223,0.0003528615845,5.73E-06],
+      "hls": [55.6399556,24.59116783,16.53330023,9.905005003,5.853706872,3.815179977,2.261030616,1.404335964,0.6764008964,0.3867423444,0.1870001719,0.08453657628]
+    },
+    "MSBR 12g": {
+      "yields": [0.0005309411613,0.002518546599,0.001308314364,0.0008583059243,0.001933517006,0.002089041055,0.00364316069,0.0008997702429,0.0008088416827,0.0009810196508,0.0003411893755,4.76E-06],
+      "hls": [55.64002566,24.60088913,16.42389931,6.530346334,5.017291075,3.11140063,2.068093816,1.217697718,0.6254914699,0.3764551924,0.1850371527,0.08107051018]
     },
     "pulse (8 Group)": {
       "description": "Calculated using IAEA and JEFF40 data, post-irrad, (0.0001,0) 0.0001 second irradiation, 100 decay times, 600 decay seconds",

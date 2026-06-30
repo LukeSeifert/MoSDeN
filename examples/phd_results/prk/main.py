@@ -122,11 +122,12 @@ class PRKE:
     def _get_reactivity(self, problem, reactivity_form: str):
         total_yield = self.data['neutrons_per_fission']
         betaeff = np.sum(self.data[problem]['yields']) /  total_yield
+        step_duration = self.data['step_duration']
         if reactivity_form == 'step':
-            rho = lambda t: 50e-5
+            rho = lambda t: self.data['step_insertion']
             return rho
         elif reactivity_form == 'step_relative':
-            rho = lambda t: self.data['step_relative_insertion'] * betaeff
+            rho = lambda t: self.data['step_relative_insertion'] * betaeff * np.heaviside(-(t-step_duration),0)
             return rho
         elif reactivity_form == 'ramp':
             rho_max = self.data['rho_max_dollars'] * betaeff
@@ -200,13 +201,12 @@ class PRKE:
         linestyles = [':', '-.', '--']
         colors = self.post.get_colors(len(full_data))
         for pi, (problem, data) in enumerate(full_data.items()):
-            label: str = problem.title()
+            label: str = problem
             times = data['times']
             power = data['power']
             plt.plot(times, power, label=label, linestyle=linestyles[pi%len(linestyles)], color=colors[pi])
             print(f'{label} {power[-1] = }')
         plt.legend()
-        #plt.xscale('log')
         plt.xlabel('Time [s]')
         plt.ylabel(r'$n$')
         plt.savefig(f'compare_power.png')
@@ -214,7 +214,7 @@ class PRKE:
 
 
         for pi, (problem, data) in enumerate(full_data.items()):
-            label: str = problem.title()
+            label: str = problem
             times = data['times']
             power = np.asarray(data['power'])
             if pi == 0:
@@ -231,7 +231,7 @@ class PRKE:
         
         for group in range(self.num_groups):
             for pi, (problem, data) in enumerate(full_data.items()):
-                label: str = problem.title()
+                label: str = problem
                 times = data['times']
                 concs = data['concs']
                 conc = np.asarray(concs)[:, group]
@@ -245,7 +245,7 @@ class PRKE:
             plt.close()
 
         for pi, (problem, data) in enumerate(full_data.items()):
-            label: str = problem.title()
+            label: str = problem
             times = data['times']
             power = np.asarray(data['power'])
             base_rho = data['reactivity']
