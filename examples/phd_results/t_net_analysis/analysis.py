@@ -259,12 +259,6 @@ def plot_accumulated_data(accumulated_data, actual_yield=None, actual_hl=None):
     plt.tight_layout()
     plt.savefig(f'avg_hl_diff.png')
     plt.close()
-
-
-
-
-
-
     return None
 
 
