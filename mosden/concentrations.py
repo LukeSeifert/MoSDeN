@@ -101,7 +101,8 @@ class Concentrations(BaseClass):
     
     def _evaluate_conc(self, cur_conc: float, cur_p_conc: float, lam_p: float, lam: float, ti: int, dt: list[float], fission_rates: list[float], concs: list[float], p_concs: list[float], y_p: float, y: float) -> tuple[float, float]:
         """
-        Evaluates the concentration of a nuclide and its decay parent.
+        Evaluates the concentration of a nuclide and its decay parent at the 
+        next time step.
         Yield of parent is assumed to be scaled by branching ratio.
 
         Parameters
@@ -174,12 +175,14 @@ class Concentrations(BaseClass):
         Parameters
         ----------
         data : list[dict[str, float]]
-            List of data at each point in time for concentration
+            List of data at each point in time for concentration without debug
+            DNP data
         
         Returns
         -------
         data : list[dict[str, float]]
-            List of data at each point in time for concentration
+            List of data at each point in time for concentration with debug 
+            DNP data
         """
         if not self.has_debug_dnps:
             return data
