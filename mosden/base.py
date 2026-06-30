@@ -234,7 +234,7 @@ class BaseClass:
     def _get_times_and_rates(self, f_in: float = 1.0) -> dict[str, list[float|int]]:
         """
         Calculates the time steps to evaluate in OpenMC, the source rates
-        to use at each time step, and the chemical removal indeces where
+        to use at each time step, and the chemical removal indices where
         removal occurs.
 
         Parameters
@@ -246,11 +246,11 @@ class BaseClass:
         -------
         time_rate_data : dict[str, list[float|int]]
             Keys are names for different datasets, values are the time-dependent
-            data. Keys include `timesteps`, `source_rates`, `removal_indeces`,
+            data. Keys include `timesteps`, `source_rates`, `removal_indices`,
             and `irrad_mask`
         """
         time_rate_data = dict()
-        removal_indeces = list()
+        removal_indices = list()
         timesteps = list()
         source_rates = list()
         irrad_residual_mask = list()
@@ -283,7 +283,7 @@ class BaseClass:
                 current_time += t
                 timesteps.append(t)
                 if (region in self.reprocess_locations) or self.chem_scaling:
-                    removal_indeces.append(index_counter)
+                    removal_indices.append(index_counter)
                 if self.flux_scaling:
                     source = self.openmc_settings['source'] * f_in
                 source_rates.append(source)
@@ -303,7 +303,7 @@ class BaseClass:
 
         time_rate_data['timesteps'] = timesteps
         time_rate_data['source_rates'] = source_rates
-        time_rate_data['removal_indeces'] = removal_indeces
+        time_rate_data['removal_indices'] = removal_indices
         time_rate_data['irrad_mask'] = irrad_residual_mask
         return time_rate_data
 

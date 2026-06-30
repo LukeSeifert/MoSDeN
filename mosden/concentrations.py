@@ -310,7 +310,7 @@ class Concentrations(BaseClass):
             'omc_dir': omc_dir,
             'timesteps': time_rate_data['timesteps'],
             'source_rates': time_rate_data['source_rates'],
-            'removal_indeces': time_rate_data['removal_indeces']
+            'removal_indices': time_rate_data['removal_indices']
         }
         rendered_template = template.render(render_data)
         fname = 'omc.py'
