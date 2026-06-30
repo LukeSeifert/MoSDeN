@@ -231,7 +231,7 @@ class BaseClass:
         return values
 
     
-    def _get_times_and_rates(self, f_in: float = 1.0) -> dict[str, list[float|int]]:
+    def _get_times_and_rates(self, incore_fraction: float = 1.0) -> dict[str, list[float|int]]:
         """
         Calculates the time steps to evaluate in OpenMC, the source rates
         to use at each time step, and the chemical removal indices where
@@ -239,7 +239,7 @@ class BaseClass:
 
         Parameters
         ----------
-        f_in : float (optional)
+        incore_fraction : float (optional)
             Only required if the flux is scaled. The in-core salt fraction.
 
         Returns
@@ -285,7 +285,7 @@ class BaseClass:
                 if (region in self.reprocess_locations) or self.chem_scaling:
                     removal_indices.append(index_counter)
                 if self.flux_scaling:
-                    source = self.openmc_settings['source'] * f_in
+                    source = self.openmc_settings['source'] * incore_fraction
                 source_rates.append(source)
                 index_counter += 1
                 time_close = np.isclose(current_time, self.t_net)
